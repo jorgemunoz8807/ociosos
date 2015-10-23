@@ -1,0 +1,72 @@
+﻿#MainMenu
+{
+    margin: 30px auto;
+    padding: 0;
+    background-color: white;
+    /*float: left;*/
+    /*border: 1px solid #2F7F4A;*/
+    /*border: 1px solid #0E0E0E;*/
+    width: 1024px;
+    height: 260px;
+    -webkit-box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
+    /*-webkit-box-shadow: 1px 1px 30px rgba(242, 101, 34, 0.5);
+    -moz-box-shadow: 1px 1px 30px rgba(242, 101, 34, 0.5);
+    box-shadow: 1px 1px 30px rgba(242, 101, 34, 0.5);*/
+}
+
+    #MainMenu ul
+    {
+        margin: 60px auto;
+        /*background-color: darkblue;*/
+        padding: 25px 0;
+        list-style: none;
+    }
+
+        #MainMenu ul#ConsUl
+        {
+            width: 332px;
+        }
+
+        #MainMenu ul#EditUl
+        {
+            width: 680px;
+        }        
+
+        #MainMenu ul#AdminUl
+        {
+            width: 695px;
+        }
+
+        #MainMenu ul#SAdminUl
+        {
+            width: 735px;            
+        }
+
+    #MainMenu li
+    {
+        padding: 5px 25px;
+        float: left;
+    }
+
+    /*#lateralMenu li:nth-child(odd)
+        {
+            background-color: whitesmoke;
+        }*/
+
+    #MainMenu h2
+    {
+        /*background-color: blue;*/
+        /*background-color: #2F7F4A;*/
+        /*background-color: #0E0E0E;*/
+        /*background-color: #642D90;*/
+        /*background-color: #EC931D;*/
+        /*background-color: #E36C09;*/
+        background-color: #F26522;
+        /*background-color: #CB3F13;*/
+        /*background-color: #D72122;*/
+        color: white;
+        padding: 5px 15px;
+        text-align:center;
+    }

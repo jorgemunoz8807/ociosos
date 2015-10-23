@@ -1,0 +1,23 @@
+rodas_xml_index:
+    pattern:  /
+    defaults: { _controller: RodasXMLBundle:Default:index }
+
+rodas_xml_exportar:
+    pattern: /exportar
+    defaults: { _controller: RodasXMLBundle:RodasXML:exportarToBD }
+
+products_added:
+  pattern: /products_added
+  defaults: { _controller: RodasXMLBundle:RodasXML:AddProductByPos }
+
+rodas_xml_verify:
+  pattern: /verify
+  defaults: { _controller: RodasXMLBundle:RodasXML:VerifiyProductsInDatabase }
+
+rodas_xml_delete:
+  pattern: /delete
+  defaults: { _controller: RodasXMLBundle:RodasXML:DeleteProductsByEntity }
+
+rodas_xml_propose:
+  pattern: /propose
+  defaults: { _controller: RodasXMLBundle:RodasXML:ProposeCategories }

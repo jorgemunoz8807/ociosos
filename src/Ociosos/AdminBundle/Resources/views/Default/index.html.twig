@@ -1,0 +1,116 @@
+{% extends "::admin.html.twig" %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('admin') }}
+{% endblock %}
+
+{% block main %}
+    <div  id="main_area">
+        <p id="main_subtitle">Módulo de administración, tendrá la capacidad de insertar, modificar o eliminar los nomencladores asociados a la aplicación.</p>
+
+        <ul>
+            <li>
+                <div id="stoke_area" class="areas">
+                    <p class="area_title">Almacenes</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="Stoke Icon" title="Stoke Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_almacen_index')}}">Almacenes</a>
+                            <p class="subtitle">M&oacute;dulo para listar los almacenes donde se encuentran ubicados los productos.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="category_area" class="areas">
+                    <p class="area_title">Categor&iacute;as</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="Category Icon" title="Category Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_categoria_index')}}">Categor&iacute;as</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar las Categor&iacute;as</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="entity_area" class="areas">
+                    <p class="area_title">Centros</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="Entity Icon" title="Entity Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_centro_index')}}">Centros del Citma</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar los Centros.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="state_area" class="areas">
+                    <p class="area_title">Municipios</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="State Icon" title="State Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_municipio_index')}}">Municipios</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar los Municipios.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="organization_area" class="areas">
+                    <p class="area_title">Organizaciones</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="Organization Icon" title="Organization Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_organizacion_index')}}">Organizaciones</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar las Organizaciones.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="product_area" class="areas">
+                    <p class="area_title">Productos</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="Product Icon" title="Product Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_producto_index')}}">Productos</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar los Productos.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="city_area" class="areas">
+                    <p class="area_title">Provincias</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="City Icon" title="City Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_provincia_index')}}">Provincias</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar las Provincias.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div id="user_area" class="areas">
+                    <p class="area_title">Usuarios</p>
+                    <div class="body_area">
+                        <img src="{{ asset('bundles/admin/images/configuration.png') }}" alt="User Icon" title="User Icon"/>
+                        <div class="description">
+                            <a href="{{path('admin_usuario_index')}}">Usuarios</a>
+                            <p class="subtitle">M&oacute;dulo para listar, adicionar, modificar o eliminar los Usuarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('', "") }}
+{% endblock %}

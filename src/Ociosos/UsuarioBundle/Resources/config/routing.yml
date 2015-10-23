@@ -1,0 +1,20 @@
+usuario_login:
+    pattern:  /login
+    defaults: { _controller: UsuarioBundle:Usuario:login }
+#    defaults: { _controller: UsuarioBundle:Default:index }
+    
+usuario_login_check:
+    pattern:  /login_check
+#    defaults: { _controller: UsuarioBundle:Default:login }
+    
+usuario_logout:
+    pattern:  /logout
+#    defaults: { _controller: UsuarioBundle:Default:login }
+
+usuario_perfil:
+  path: /perfil
+  defaults: { _controller: UsuarioBundle:Usuario:perfil }
+  
+usuario_all:
+  path: /*
+  

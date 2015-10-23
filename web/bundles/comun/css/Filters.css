@@ -1,0 +1,86 @@
+#filters
+{
+    background-color: #F4F4F4;
+    margin: 0 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#all-filters
+{
+    display: inline-block;
+    /*background-color: bisque;*/
+}
+
+#state-filter, #category-filter, #entity-filter
+{
+    float: left;
+    /*background-color: aquamarine;*/
+    margin: 0 5px;
+    padding: 10px 20px;
+}
+
+#state-filter
+{
+
+}
+#category-filter
+{
+
+}
+#entity-filter
+{
+
+}
+
+.editor-label, .editor-field
+{
+
+}
+.editor-label
+{
+    font-size: 11pt;
+    /*color: #A1A1A1;*/
+    color: #808080;
+}
+
+.editor-field
+{
+    margin-top: 12px;
+}
+
+#all-filters select
+{
+    color: #E36C09;
+    /*color: #598631;*/
+    padding: 3px;
+    border: 1px solid #CCCCCC;
+    outline: none;
+
+    -webkit-transition: box-shadow 0.3s ease, border 0.2s linear;
+    -moz-transition: box-shadow 0.3s ease, border 0.2s linear;
+    transition: box-shadow 0.3s ease, border 0.2s linear;
+}
+
+#all-filters select:focus
+{
+    border: 1px solid #E36C09;
+    -webkit-box-shadow: 0 0px 5px rgba(227,108,9, 1);
+    -moz-box-shadow: 0 4px 10px rgba(227,108,9, 1);
+    box-shadow: 0 0px 5px rgba(227,108,9, 1);
+}
+
+#all-filters select:after
+{
+    /*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+    /*-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+    /*-op-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+    /*box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+}
+
+#all-filters select option
+{
+    padding: 2px 5px;
+}
+
+

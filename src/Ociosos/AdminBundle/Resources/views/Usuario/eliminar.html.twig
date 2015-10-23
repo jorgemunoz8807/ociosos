@@ -1,0 +1,53 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('user') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_usuario_index') }}">Usuarios</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Usuario</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+
+
+        {% if app.user.username==usuario.username%}
+        <div class="cannot-delete">
+            {#{% if(count > 50) %}#}
+
+            <p>   El usuario "{{ usuario.nombre }}" no puede ser eliminado mientras se encuentre autenticado
+                <br>                <br>
+
+                <a href="{{ path('admin_usuario_index') }}">Volver al listado de Usuarios</a>
+
+        </div>
+
+        {% else %}
+        <div class="confirm-delete">
+            {#{% if $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')==true or $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')  %}#}
+
+
+            <p>Seguro desea eliminar el usuario "{{ usuario.nombre }}"?</p>
+            <br>
+
+            <a class="button" href="{{ path('admin_usuario_eliminar_confirm', {'id': usuario.id}) }}">S&iacute;</a>
+
+
+            <a  class="button" href="{{ path('admin_usuario_index') }}">No</a>
+        </div>
+        {%endif %}
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('user', "delete") }}
+{% endblock %}

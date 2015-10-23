@@ -1,0 +1,55 @@
+{% macro admin_navigation(whosActive) %}
+
+        <ul>
+            <li><a href="{{ path('portada') }}"><img src="{{ asset('bundles/admin/images/home15.png') }}" /></a></li>
+
+            {% if(whosActive == "stock") %}
+                <li><a class="active" href="{{ path('admin_almacen_index') }}">Almacenes</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_almacen_index') }}">Almacenes</a></li>
+            {% endif %}
+
+            {% if(whosActive == "category") %}
+                <li><a class="active" href="{{ path('admin_categoria_index') }}">Categor&iacute;as</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_categoria_index') }}">Categor&iacute;as</a></li>
+            {% endif %}
+
+            {% if(whosActive == "entity") %}
+                <li><a class="active" href="{{ path('admin_centro_index') }}">Centros</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_centro_index') }}">Centros</a></li>
+            {% endif %}
+
+            {% if(whosActive == "city") %}
+                <li><a class="active" href="{{ path('admin_municipio_index') }}">Municipios</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_municipio_index') }}">Municipios</a></li>
+            {% endif %}
+
+            {% if(whosActive == "organization") %}
+                <li><a class="active" href="{{ path('admin_organizacion_index') }}">Organizaciones</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_organizacion_index') }}">Organizaciones</a></li>
+            {% endif %}
+
+            {% if(whosActive == "product") %}
+                <li><a class="active" href="{{ path('admin_producto_index') }}">Productos</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_producto_index') }}">Productos</a></li>
+            {% endif %}
+
+            {% if(whosActive == "state") %}
+                <li><a class="active" href="{{ path('admin_provincia_index') }}">Provincias</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_provincia_index') }}">Provincias</a></li>
+            {% endif %}
+
+            {% if(whosActive == "user") %}
+                <li><a class="active" href="{{ path('admin_usuario_index') }}">Usuarios</a></li>
+            {% else %}
+                <li><a href="{{ path('admin_usuario_index') }}">Usuarios</a></li>
+            {% endif %}
+        </ul>
+
+{% endmacro %}

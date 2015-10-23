@@ -1,0 +1,11 @@
+Ociosos\RodasXMLBundle\Entity\XmlFile:
+  properties:
+    xmlFile:
+      - NotNull:
+          message: El campo no puede estar vacío. Debe seleccionar un fichero Xml.
+      - File:
+          mimeTypes: [text/xml, application/xml]
+          mimeTypesMessage: El tipo de fichero {{ type }} es inválido. Los tipos de ficheros permitidos son {{ types }}.
+          maxSize: 20M
+          maxSizeMessage: El fichero es muy grande {{ size }} {{ suffix }}. El máximo permitido es {{ limit }} {{ suffix }}.
+

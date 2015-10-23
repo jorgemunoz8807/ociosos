@@ -1,0 +1,10 @@
+#contact {
+    margin: 0px auto;
+    width: 280px;
+    clear: both;
+    float: none;
+}
+
+#contact .editor-full {
+    text-align: center;
+}

@@ -1,0 +1,58 @@
+.delete
+{
+    margin: 20px auto 0;
+    width: 50%;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    border: 1px solid #BEBFB9;
+}
+.confirm-delete
+{
+    padding: 30px 60px;
+    text-align: center;
+    /*background-color: #0088CC;*/
+}
+.cannot-delete
+{
+    padding: 17px 16px;;
+}
+.cannot-delete ol
+{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.confirm-delete p, .cannot-delete p, .confirm-delete a, .cannot-delete a
+{
+    font-size: 20px;
+}
+.cannot-delete p
+{
+    margin-bottom: 10px;
+    text-align: center;
+}
+p.message-delete
+{
+    margin-bottom: 30px;
+
+}
+.confirm-delete a, .cannot-delete a
+{
+    color: #0084C6;
+}
+.confirm-delete a
+{
+    margin: 50px;
+    text-align: center;
+}
+.cannot-delete a
+{
+    margin: 5px;
+}
+.confirm-delete a:hover, .cannot-delete a:hover
+{
+    text-decoration: underline;
+}
+
+.confirm-delete .button {
+    float: none;
+}

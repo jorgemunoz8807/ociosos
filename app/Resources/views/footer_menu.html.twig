@@ -1,0 +1,91 @@
+{% macro footer_nav(whosActive, role, group) %}
+    {% if(group == "group2") %}
+        {% if(role == "ROLE_VIEWER") %}
+            {% if(whosActive == "home") %}
+                <li class="first"><a class="active" href="{{path('portada')}}">Inicio</a></li>
+            {% else %}
+                <li class="first"><a href="{{path('portada')}}">Inicio</a></li>
+            {% endif %}
+            {% if(whosActive == "consults") %}
+                <li><a class="active" href="{{ path('consultas') }}">Productos</a></li>
+            {% else %}
+                <li><a href="{{ path('consultas') }}">Productos</a></li>
+            {% endif %}
+            {% if(whosActive == "reports") %}
+                <li><a class="active" href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% else %}
+                <li><a href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% endif %}
+        {% elseif(role == "ROLE_EDITOR") %}
+            {% if(whosActive == "home") %}
+                <li class="first"><a class="active" href="{{path('portada')}}">Inicio</a></li>
+            {% else %}
+                <li class="first"><a href="{{path('portada')}}">Inicio</a></li>
+            {% endif %}
+            {% if(whosActive == "consults") %}
+                <li><a class="active" href="{{ path('consultas') }}">Productos</a></li>
+            {% else %}
+                <li><a href="{{ path('consultas') }}">Productos</a></li>
+            {% endif %}
+            {% if(whosActive == "reports") %}
+                <li><a class="active" href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% else %}
+                <li><a href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% endif %}
+            {% if(whosActive == "xml") %}
+                <li><a class="active" href="{{ path('rodas_xml_index') }}">Rodas Xml</a></li>
+            {% else %}
+                <li><a href="{{ path('rodas_xml_index') }}">Rodas Xml</a></li>
+            {% endif %}
+            {% if(whosActive == "edit") %}
+                <li><a class="active" href="{{ path('edit_index') }}">Editar</a></li>
+            {% else %}
+                <li><a href="{{ path('edit_index') }}">Editar</a></li>
+            {% endif %}
+        {% elseif(role == "ROLE_ADMIN") %}
+            {% if(whosActive == "home") %}
+                <li class="first"><a class="active" href="{{path('portada')}}">Inicio</a></li>
+            {% else %}
+                <li class="first"><a href="{{path('portada')}}">Inicio</a></li>
+            {% endif %}
+            {% if(whosActive == "consults") %}
+                <li><a class="active" href="{{ path('consultas') }}">Productos</a></li>
+            {% else %}
+                <li><a href="{{ path('consultas') }}">Productos</a></li>
+            {% endif %}
+            {% if(whosActive == "reports") %}
+                <li><a class="active" href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% else %}
+                <li><a href="{{ path('reporte_index') }}">Reportes</a></li>
+            {% endif %}
+            {% if(whosActive == "xml") %}
+                <li><a class="active" href="{{ path('rodas_xml_index') }}">Rodas Xml</a></li>
+            {% else %}
+                <li><a href="{{ path('rodas_xml_index') }}">Rodas Xml</a></li>
+            {% endif %}
+            {#{% if(whosActive == "edit") %}#}
+                {#<li><a class="active" href="{{ path('edit_index') }}">Editar</a></li>#}
+            {#{% else %}#}
+                {#<li><a href="{{ path('edit_index') }}">Editar</a></li>#}
+            {#{% endif %}#}
+            <li class="last"><a href="{{ path('admin_portada') }}">Administrar</a></li>
+        {% else %}
+            {% if(whosActive == "home") %}
+                <li class="first"><a class="active" href="{{path('portada')}}">Inicio</a></li>
+            {% else %}
+                <li class="first"><a href="{{path('portada')}}">Inicio</a></li>
+            {% endif %}
+        {% endif %}
+    {% elseif(group == "group1") %}
+        {% if(whosActive == "terms") %}
+            <li><a class="active" href="{{path('pagina_estatica', {'pagina': 'terminos'})}}">T&eacute;rminos y Condiciones</a></li>
+        {% else %}
+            <li><a href="{{path('pagina_estatica', {'pagina': 'terminos'})}}">T&eacute;rminos y Condiciones</a></li>
+        {% endif %}
+        {% if(whosActive == "contacts") %}
+            <li><a class="active" href="{{path('pagina_estatica', {'pagina': 'contactos'})}}">Contactos</a></li>
+        {% else %}
+            <li><a href="{{path('pagina_estatica', {'pagina': 'contactos'})}}">Contactos</a></li>
+        {% endif %}
+    {% endif %}
+{% endmacro %}

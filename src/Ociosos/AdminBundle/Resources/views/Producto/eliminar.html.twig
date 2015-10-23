@@ -1,0 +1,32 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('product') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_producto_index') }}">Productos</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Producto</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+        <div class="confirm-delete">
+            <p>Seguro desea eliminar el producto "{{ producto.nombre }}"?</p>
+            <br>
+            <a class="button" href="{{ path('admin_producto_eliminar_confirm', {'id': producto.id}) }}">S&iacute;</a>
+            <a class="button" href="{{ path('admin_producto_index') }}">No</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('product', "delete") }}
+{% endblock %}

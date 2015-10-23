@@ -1,0 +1,16 @@
+{% extends "::admin.html.twig" %}
+
+{% block main %}
+<h2>Municipio: {{municipio.nombre}}</h2>
+
+<div>
+    <fieldset>
+        <legend>Detalles</legend>
+        <p>Nombre: {{municipio.nombre}}</p>
+        <p>Provincia a que pertenece: {{municipio.provincia}}</p>
+    </fieldset>
+</div>
+
+<a href="{{path('admin_municipio_index')}}">Volver al listado</a>
+
+{% endblock %}

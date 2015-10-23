@@ -1,0 +1,42 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Contactos{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block banner %} 
+<div id="banner">
+    <img alt="Banner" src="{{ asset('bundles/comun/images/banner.jpg') }}" />
+</div>
+{% endblock %}
+
+{% block main %}
+<div id="main">   
+    <h1>Contactos</h1>
+    <p class="static-text">
+           Ave 47 s/n entre 18A y 20, Miramar,Playa,La Habana, Cuba Código Postal 11300<br>
+        Teléfono: (07)2069300 <br>
+             Fax: (07)2048202 <br>
+    </p>
+</div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('contacts', "", "group1") }}
+{% endblock %}

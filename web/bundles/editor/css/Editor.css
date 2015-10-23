@@ -1,0 +1,57 @@
+#message
+{
+    display: none;
+    color: #808080;
+    font-size: 1.3em;
+    border: 1px solid #1E7842;
+    padding: 10px;
+    margin: 8px 0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+#message:after
+{
+    content: ' ';
+    clear: both;
+    display: block;
+}
+#message img
+{
+    margin: 0 5px;
+}
+#message img, #message p
+{
+    float: left;
+}
+
+#edit
+{
+    display: block;
+    padding: 20px;
+}
+
+#edit:after
+{
+    content: ' ';
+    clear: both;
+    display: block;
+}
+
+#edit img, #edit a#add-viewer
+{
+    float: left;
+}
+a#add-viewer
+{
+    display: block;
+    color: #E36C09;
+    /*color: #598631;*/
+    margin-left: 10px;
+    font-size: 1.3em;
+}
+
+a#add-viewer:hover
+{
+    text-decoration: underline;
+}

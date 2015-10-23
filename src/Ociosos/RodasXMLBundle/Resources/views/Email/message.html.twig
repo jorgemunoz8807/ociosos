@@ -1,0 +1,14 @@
+<h2>Propuesta de Categor&iacute;as</h2>
+<p>El usuario con los siguientes datos le propone a usted que se adicionen las siguientes Categor&iacute;as.
+    Para m&aacute;s detalles se adjunta el fichero Xml que intentó adicionar el usuario en la aplicaci&oacute;n web.</p>
+
+<h4>Datos del Usuario:</h4>
+<p>Nombre: {{ name }}</p>
+<p>Apellidos: {{ lastname }}</p>
+<p>Nombre de usuario: {{ username }}</p>
+<p>Centro al que pertenece: {{ entityName }} ({{ entityInitials }})</p>
+<br>
+<h4>Categor&iacute;as propuestas:</h4>
+{% for information in informations %}
+    <p>{{ information }}</p>
+{% endfor %}

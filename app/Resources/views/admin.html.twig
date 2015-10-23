@@ -1,0 +1,37 @@
+{% extends "::base_backend.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/admin/css/admin.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/menu.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/header.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/footer.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block additional_style %}{% endblock %}
+
+{% block body %}
+    <div id="header">
+        <div id="menu">
+            <nav>
+                {% block nav %}{% endblock %}
+            </nav>
+            <div id="user-data">
+                {{ render(controller('UsuarioBundle:Usuario:authLinkAdmin')) }}
+            </div>
+        </div>
+
+        <div id="breadcrumbs">
+            <a href="{{ path('portada') }}">Inicio</a> {% block breadcrumbs %} {% endblock %}
+        </div>
+        {% block header_title %} <p id="title">Administraci&oacute;n</p> {% endblock %}
+    </div>
+
+<div id="full-main">    
+    {% block main %}
+
+    {% endblock %}
+    </div>
+{% endblock %}
+
+{% block footerNav %}{% endblock %}
+
+{% block javascripts %}{% endblock %}

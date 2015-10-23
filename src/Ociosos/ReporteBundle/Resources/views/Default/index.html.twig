@@ -1,0 +1,51 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Reportes{% endblock %}
+
+{% block nav %}
+    {#{% import '::main_menu.html.twig' as mainMenu %}#}
+    {#{{ mainMenu.navigation('reports', role) }}#}
+
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('reports', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('reports', "") }}
+    {% endif %}
+
+{% endblock %}
+
+{% block main %}
+<div id="main">
+    <div id="reports">
+        <h1>Seleccione el reporte que desea ver</h1>
+        <div id="content-area">
+            <form action="{{ path('reporte_generar') }}" method="post">
+                <div id="content-form">
+                    <br/>
+                    <p><input id ="Org" value="entity" type="radio" name="report" /><label for="Org">Reporte por Organización.</label></p><br/>
+                    <p><input id ="Prov" value="state" type="radio" name="report" /><label for="Prov">Reporte por Provincia.</label></p><br/>
+                    <p><input id ="Cat" value="category" type="radio" name="report" /><label for="Cat">Reporte por Categoría.</label></p><br/>
+                    <p><input type="submit" name="btnReport" value="Generar Reporte" /></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('reports', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('reports', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

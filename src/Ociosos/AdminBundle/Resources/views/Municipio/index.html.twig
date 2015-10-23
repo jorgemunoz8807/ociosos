@@ -1,0 +1,64 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/grids.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Pagination.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('city') }}
+{% endblock %}
+
+{% block breadcrumbs %} &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a> {% endblock %}
+{% block header_title %} <p id="title">Municipios</p> {% endblock %}
+
+{% block main %}
+
+<div class="grid">
+    <div class="dataGrid">
+        <div class="button-container">
+            <a class="button" href="{{path('admin_municipio_crear')}}">Nuevo Municipio</a>
+            <img src="{{ asset('bundles/admin/images/add2.png') }}" />
+        </div>
+        
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre del Municipio</th>
+                <th>Provincia</th>
+                <th>Operaciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for municipio in pagination %}
+                <tr>
+                    <td>{{municipio.nombre}}</td>
+                    <td>{{municipio.provincia}}</td>
+                    <td class="operations">
+                        <a href="{{path('admin_municipio_editar', { 'id': municipio.id })}}">
+                            <img src="{{ asset('/ociosos/web/bundles/admin/images/edit.png') }}" alt="Editar" title="Editar"><img/></a> &nbsp;
+                        <a href="{{path('admin_municipio_eliminar', { 'id': municipio.id })}}">
+                            <img src="{{ asset('/ociosos/web/bundles/admin/images/delete.png') }}" alt="Eliminar" title="Eliminar"><img/></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <div class="count">
+            <p> ( {{ pagination.getTotalItemCount  }} municipios) </p>
+        </div>
+        {#<a class="button" href="{{path('admin_municipio_crear')}}">Nuevo Municipio</a>#}
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('city', "list") }}
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    {#<link href="{{ asset('bundles/admin/css/adds.css') }}" rel="stylesheet" type="text/css"/>#}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('entity') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_centro_index') }}">Centros</a>
+{% endblock %}
+{% block header_title %} <p id="title">Editar Centro</p> {% endblock %}
+
+{% block main %}
+
+    <div class="adds">
+        <div class="dataAdds">
+            <form action="{{ path('admin_centro_editar', {'id': centro.id}) }}" method="post">
+                {#{{form_widget(formulario, {'attr': {'class':'add_forms'}})}}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                    {{ form_errors(form.siglas) }}
+                    {{ form_errors(form.direccion) }}
+                    {{ form_errors(form.telefono) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_errors(form.director) }}
+                    {{ form_errors(form.rEEUP) }}
+                    {{ form_errors(form.organizacion) }}
+                    {{ form_errors(form.municipio) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.siglas) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.siglas) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.siglas) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.direccion) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.direccion) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.direccion) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.telefono) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.telefono) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.telefono) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.email) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.email) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.email) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.director) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.director) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.director) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.rEEUP) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.rEEUP) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.rEEUP) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.organizacion) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.organizacion) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.organizacion) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.municipio) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.municipio) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.municipio) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Modificar" />
+                <a class="button button-bottom" href="{{path('admin_centro_index')}}">Volver al listado</a>
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('entity', "edit") }}
+{% endblock %}

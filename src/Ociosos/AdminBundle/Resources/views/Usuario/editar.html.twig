@@ -1,0 +1,104 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    {#<link href="{{ asset('bundles/admin/css/adds.css') }}" rel="stylesheet" type="text/css"/>#}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('user') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_usuario_index') }}">Usuarios</a>
+{% endblock %}
+{% block header_title %} <p id="title">Editar Usuario</p> {% endblock %}
+
+{% block main %}
+    <div class="adds">
+        <div class="dataAdds">
+            <form action="{{path('admin_usuario_editar', {'id': usuario.id})}}" method="post">
+                {#{{ form_widget(formulario, {'attr': {'class':'add_forms'}}) }}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                    {{ form_errors(form.apellidos) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_errors(form.password.pass) }}
+                    {{ form_errors(form.password.confirm) }}
+                    {{ form_errors(form.role) }}
+                    {{ form_errors(form.salt) }}
+                    {{ form_errors(form.centro) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.apellidos) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.apellidos) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.apellidos) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.email) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.email) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.email) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.username) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.username) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.username) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.password.pass) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.password.pass) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.password.pass) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.password.confirm) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.password.confirm) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.password.confirm) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.role) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.role) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.role) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.salt) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.salt) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.salt) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.centro) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.centro) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.centro) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Modificar" />
+                <a class="button button-bottom" href="{{path('admin_usuario_index')}}">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('user', "edit") }}
+{% endblock %}

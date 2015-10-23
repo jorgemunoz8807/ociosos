@@ -1,0 +1,108 @@
+
+> php.exe C:\Composer\composer.phar update
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Removing twig/twig (v1.15.0)
+  - Installing twig/twig (v1.15.1)
+    Loading from cache
+
+  - Removing doctrine/collections (v1.1)
+  - Installing doctrine/collections (v1.2)
+    Loading from cache
+
+  - Removing doctrine/common (v2.4.1)
+  - Installing doctrine/common (v2.4.2)
+    Loading from cache
+
+  - Removing symfony/icu (v1.2.0)
+  - Installing symfony/icu (v1.0.1)
+    Loading from cache
+
+  - Removing symfony/symfony (v2.3.8)
+  - Installing symfony/symfony (v2.3.16)
+    Loading from cache
+
+  - Removing doctrine/orm (2.3.4)
+  - Installing doctrine/orm (v2.3.6)
+    Loading from cache
+
+  - Removing swiftmailer/swiftmailer (v5.0.3)
+  - Installing swiftmailer/swiftmailer (v5.2.1)
+    Loading from cache
+
+  - Removing symfony/swiftmailer-bundle (v2.3.4)
+  - Installing symfony/swiftmailer-bundle (v2.3.7)
+    Loading from cache
+
+  - Removing jdorn/sql-formatter (v1.2.16)
+  - Installing jdorn/sql-formatter (v1.2.17)
+    Loading from cache
+
+  - Removing monolog/monolog (1.7.0)
+  - Installing monolog/monolog (1.10.0)
+    Loading from cache
+
+Writing lock file
+Generating autoload files
+Updating the "app/config/parameters.yml" file
+Clearing the cache for the dev environment with debug true
+Installing assets using the hard copy option
+Installing assets for Symfony\Bundle\FrameworkBundle into web/bundles/framework
+Installing assets for Ociosos\ComunBundle into web/bundles/comun
+Installing assets for Ociosos\AdminBundle into web/bundles/admin
+Installing assets for Ociosos\RodasXMLBundle into web/bundles/rodasxml
+Installing assets for Ociosos\ReporteBundle into web/bundles/reporte
+Installing assets for Acme\DemoBundle into web/bundles/acmedemo
+Installing assets for Sensio\Bundle\DistributionBundle into web/bundles/sensiodistribution
+
+Process finished with exit code 0 at 09:10:20.
+Execution time: 3.594.529 ms.
+
+> php.exe C:\Composer\composer.phar update knplabs/knp-paginator-bundle
+Package "knplabs/knp-paginator-bundle" listed for update is not installed. Ignoring.
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Nothing to install or update
+Generating autoload files
+Updating the "app/config/parameters.yml" file
+Clearing the cache for the dev environment with debug true
+Installing assets using the hard copy option
+Installing assets for Symfony\Bundle\FrameworkBundle into web/bundles/framework
+Installing assets for Ociosos\ComunBundle into web/bundles/comun
+Installing assets for Ociosos\AdminBundle into web/bundles/admin
+Installing assets for Ociosos\RodasXMLBundle into web/bundles/rodasxml
+Installing assets for Ociosos\ReporteBundle into web/bundles/reporte
+Installing assets for Acme\DemoBundle into web/bundles/acmedemo
+Installing assets for Sensio\Bundle\DistributionBundle into web/bundles/sensiodistribution
+
+Process finished with exit code 0 at 09:16:50.
+Execution time: 251.933 ms.
+
+> php.exe C:\Composer\composer.phar update knplabs/knp-paginator-bundle
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Installing knplabs/knp-components (1.2.5)
+    Loading from cache
+
+  - Installing knplabs/knp-paginator-bundle (2.4.0)
+    Loading from cache
+
+knplabs/knp-components suggests installing doctrine/mongodb-odm (to allow usage pagination with Doctrine ODM MongoDB)
+knplabs/knp-components suggests installing ruflin/Elastica (to allow usage pagination with ElasticSearch Client)
+knplabs/knp-components suggests installing propel/propel1 (to allow usage pagination with Propel ORM)
+knplabs/knp-components suggests installing solarium/solarium (to allow usage pagination with Solarium Client)
+Writing lock file
+Generating autoload files
+Updating the "app/config/parameters.yml" file
+Clearing the cache for the dev environment with debug true
+Installing assets using the hard copy option
+Installing assets for Symfony\Bundle\FrameworkBundle into web/bundles/framework
+Installing assets for Ociosos\ComunBundle into web/bundles/comun
+Installing assets for Ociosos\AdminBundle into web/bundles/admin
+Installing assets for Ociosos\RodasXMLBundle into web/bundles/rodasxml
+Installing assets for Ociosos\ReporteBundle into web/bundles/reporte
+Installing assets for Acme\DemoBundle into web/bundles/acmedemo
+Installing assets for Sensio\Bundle\DistributionBundle into web/bundles/sensiodistribution
+
+Process finished with exit code 0 at 09:22:57.
+Execution time: 176.215 ms.

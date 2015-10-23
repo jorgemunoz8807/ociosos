@@ -1,0 +1,3 @@
+comun_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ComunBundle:Default:index }

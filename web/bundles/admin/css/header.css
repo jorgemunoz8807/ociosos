@@ -1,0 +1,38 @@
+#header
+{
+    /*padding-top: 30px;*/
+    background-color: #E0E0D8;    
+    height: 103px;
+    width: 100%;
+    /*-webkit-box-shadow: 0 3px 20px #E0E0D8;*/
+    /*-moz-box-shadow: 0 3px 20px #E0E0D8;*/
+    /*box-shadow: 0 3px 20px #E0E0D8;*/
+}
+
+#breadcrumbs
+{
+    margin-top: 25px;
+    float: left;
+    width: 100%;
+    font-size: 0.846em;
+    font: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    padding-left: 40px;
+}
+
+#breadcrumbs a
+{
+    color: #0074BD;
+    text-decoration: none;
+}
+
+#breadcrumbs a:hover
+{
+    text-decoration: underline;
+}
+
+p#title
+{
+    font-size: 16pt;
+    float: left;
+    padding-left: 40px;
+}

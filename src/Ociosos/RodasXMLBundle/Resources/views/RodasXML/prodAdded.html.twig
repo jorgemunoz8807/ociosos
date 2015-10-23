@@ -1,0 +1,70 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Rodas XML{% endblock %}
+{% block additionalCss %}
+    <link href="{{ asset('bundles/rodasxml/js/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/rodasxml/css/RodasXml.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('xml', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('xml', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <div id="main">
+        <div id="rodasXML">
+            <div id="validation" class="alert-complete">
+                <img src="{{ asset('bundles/rodasxml/images/check-25.png') }}" />
+                <p class="message"> {{ message }} </p>
+            </div>
+            <div id="count-prod" class="alert-incomplete">
+                <img src="{{ asset('bundles/rodasxml/images/working-25.png') }}" />
+                <p class="message">Cantidad total de productos en el fichero Xml: <span>{{ nbProducts }}</span></p>
+            </div>
+            <div id="verify-prod" class="alert-incomplete">
+                <img src="{{ asset('bundles/rodasxml/images/working-25.png') }}" />
+                <p class="message">Verificando si existen productos de {{ initials }} en la Base de Datos</p>
+            </div>
+            <input name="nbProducts" type="hidden" value="{{ nbProducts }}" />
+            <input name="filename" type="hidden" value="{{ filename }}" />
+            <input name="pathFile" type="hidden" value="{{ pathFile }}" />
+            <input name="route" type="hidden" value="{{ route }}" />
+            <input name="initials" type="hidden" value="{{ initials }}" />
+            <input name="verify_route" type="hidden" value="{{ verify_route }}" />
+            <input name="delete_route" type="hidden" value="{{ delete_route }}" />
+            <input name="redirect_route" type="hidden" value="{{ path('rodas_xml_index') }}" />
+            <div id="progress-content" class="alert-incomplete">
+                <img src="{{ asset('bundles/rodasxml/images/working-25.png') }}" />
+                <input name="imgUri" type="hidden" value="{{ asset('bundles/rodasxml/images/check-25.png') }}" />
+                <p class="message">Insertando los productos en la Base de Datos</p>
+                <div id="progressbar"></div>
+                <div id="percent"></div>
+                <div id="progress-details"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('xml', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('xml', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/rodasxml/js/jqueryui/jquery-ui-1.10.4.custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/rodasxml/js/ExportToBd.js') }}"></script>
+{% endblock %}

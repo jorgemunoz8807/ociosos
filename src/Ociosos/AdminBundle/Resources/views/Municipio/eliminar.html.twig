@@ -1,0 +1,72 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('city') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_municipio_index') }}">Municipios</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Municipio</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+        {% if(count > 0) %}
+            <div class="cannot-delete">
+                {#{% if(count > 50) %}#}
+
+                    <p>
+
+
+                        El municipio "{{ municipio.nombre }}" no puede ser eliminado pues  posee  {{ count }}
+                        {##}
+                        {#<a href="{{ path('admin_centro_index') }}">listado de los Centros</a>.#}
+               <a  href="{{ path('admin_buscar_centros',{'id':municipio.id}) }}"title="Listado de centros">Centro(s)</a>asociados.
+                              Por favor elimínelo(s)
+
+                    {#<p class="message-delete">¿Desea eliminarlo? </p>
+                    <br>
+                    <a class="button" href="{{ path('admin_municipio_eliminar_confirm', {'id': municipio.id}) }}">S&iacute;</a>
+                    <a  class="button" href="{{ path('admin_municipio_index') }}">No</a>
+
+                    </p>
+                    <br>#}
+
+
+
+                    {#{% else %}
+                    <p>
+                        Este municipio no se puede eliminar mientras siga siendo
+                        utilizado por los Centros listados a continuaci&oacute;n:
+                    </p>
+                    <ul>
+                        {% for entity in entities %}
+                            <ol>- {{ entity.nombre }} ({{ entity.siglas }}).</ol>
+                        {% endfor %}
+                    </ul>#}
+                {#{% endif %}#}
+                <br>
+                <br>
+                <a href="{{ path('admin_municipio_index') }}">Volver al listado de Municipios</a>
+            </div>
+        {% else %}
+            <div class="confirm-delete">
+                <p class="message-delete">Seguro desea eliminar el municipio "{{ municipio.nombre }}"?</p>
+                <br>
+                <a class="button" href="{{ path('admin_municipio_eliminar_confirm', {'id': municipio.id}) }}">S&iacute;</a>
+                <a class="button" href="{{ path('admin_municipio_index') }}">No</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('city', "delete") }}
+{% endblock %}

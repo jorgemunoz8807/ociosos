@@ -1,0 +1,85 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/grids.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Pagination.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('product') }}
+{% endblock %}
+
+{% block breadcrumbs %} &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a> {% endblock %}
+{% block header_title %} <p id="title">Productos</p> {% endblock %}
+
+{% block main %}
+    <div class="grid">
+        <div class="dataGrid">
+            <div class="button-container">
+                <a class="button" href="{{ path('admin_producto_crear') }}">Nuevo Producto</a>
+                <img src="{{ asset('bundles/admin/images/add2.png') }}" />
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th> <input type="checkbox" id="master-selected-item"/>{#Todos#}</th>
+                    <th>Nombre del Producto</th>
+                    <th>Estado</th>
+                    <th>Cantidad</th>
+                    <th>Precio MN</th>
+                    <th>Precio MLC</th>
+                    <th>Categor&iacute;a</th>
+                    <th>Operaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for producto in pagination %}
+                    <tr>
+                        <td><input type="checkbox" class="selected-item" data-id="{{ producto.id }}" />{#<a href="{{ path('system_database_editpost', {'id':producto.id} ) }}"></a>#}</td>
+                        <td>{{producto.nombre }}</td>
+                        {#<td>{{producto.codigo}}</td>#}
+                        <td>{% if(producto.estado == 'O') %} Ocioso {% else %} Lenta Rotaci&oacute;n {% endif %}</td>
+                        <td class="numbers">{{producto.cantidad}}</td>
+                        <td class="numbers">{{producto.precioMN}}</td>
+                        <td class="numbers">{{producto.precioMLC}}</td>
+                        <td>{{producto.categoria}}</td>
+                        {#<td>{{producto.centro}}</td>#}
+                        <td class="operations">
+
+                            <a href="{{path('admin_producto_detalles', { 'id': producto.id })}}">
+                                <img src="{{ asset('/ociosos/web/bundles/admin/images/magnifier.png') }}" alt="Detalles" title="Detalles"><img/></a> &nbsp;
+                            <a href="{{path('admin_producto_editar', { 'id': producto.id })}}">
+                                <img src="{{ asset('/ociosos/web/bundles/admin/images/edit.png') }}" alt="Editar" title="Editar"><img/></a> &nbsp;
+                            <a href="{{path('admin_producto_eliminar', { 'id': producto.id })}}">
+                                <img  src="{{ asset('/ociosos/web/bundles/admin/images/delete.png') }}" alt="Eliminar" title="Eliminar"><img/></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <a class="button" href="{{ path('system_html_deletepost', {'id':'pid'}) }}" id="link-delete-selected">Eliminar seleccionados</a>
+
+                </tbody>
+            </table>
+            <br/>
+            {#<a class="button" href="{{ path('system_html_deletepost', {'id':'pid'}) }}" id="link-delete-selected">Eliminar seleccionados</a>#}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+            <div class="count">
+                <p> ( {{ pagination.getTotalItemCount  }} productos) </p>
+            </div>
+            {#<a class="button" href="{{ path('admin_producto_crear') }}">Nuevo Producto</a>#}
+        </div>
+    </div>
+
+{#especificandole la direccion del script para los checkbox#}
+    <script type="text/javascript" src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/scripts.js') }}"></script>
+
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('product', "list") }}
+{% endblock %}
+

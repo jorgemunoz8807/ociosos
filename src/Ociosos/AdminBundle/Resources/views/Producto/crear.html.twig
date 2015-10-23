@@ -1,0 +1,201 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('product') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_producto_index') }}">Productos</a>
+{% endblock %}
+{% block header_title %} <p id="title">Crear Nuevo Producto</p> {% endblock %}
+
+{% block main %}
+    <div class="adds">
+        <div class="dataAdds">
+            <form id="ProductoCreateForm" action="{{ path('admin_producto_crear') }}" method="post">
+                {#{{ form_widget(formulario, {'attr': {'class':'add_forms'}}) }}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                    {{ form_errors(form.codigo) }}
+                    {{ form_errors(form.fechaExportacion) }}
+                    {{ form_errors(form.estado) }}
+                    {{ form_errors(form.uM) }}
+                    {{ form_errors(form.cantidad) }}
+                    {{ form_errors(form.precioMN) }}
+                    {{ form_errors(form.precioMLC) }}
+                    {{ form_errors(form.almacen) }}
+                    {{ form_errors(form.categoria) }}
+                    {{ form_errors(form.centro) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.codigo) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.codigo) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.codigo) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.fechaExportacion) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.fechaExportacion) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.fechaExportacion) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.estado) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.estado) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.estado) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.uM) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.uM) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.uM) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.cantidad) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.cantidad) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.cantidad) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.precioMN) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.precioMN) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.precioMN) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.precioMLC) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.precioMLC) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.precioMLC) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.almacen) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.almacen) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.almacen) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.categoria) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.categoria) }}
+
+                        <div class="form-inputs">
+                            {{ form_widget(form.categoria) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.centro) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.centro) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.centro) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Adicionar"/>
+                <a class="button button-bottom" href="{{ path('admin_producto_index') }}">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('product', "add") }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('jquery-validate/jquery.validate.js') }}"></script>
+    <script src="{{ asset('jquery-validate/additional-methods.js') }}"></script>
+    {#<script src="{{ asset('jquery-validate/messages_es.js') }}"></script>#}
+
+
+    <script>
+
+        $.validator.addMethod("lettersSpecific", function(value, element) {
+            return this.optional(element) || /^[a-z\sñÑáéíóú]+$/i.test(value);
+        }, "Por favor, escribe sólo letras");
+        $('#ProductoCreateForm').validate({
+
+            rules: {
+                'ociosos_comunbundle_producto[nombre]': {required: true, lettersSpecific: true},
+                'ociosos_comunbundle_producto[codigo]': {required: true},
+                'ociosos_comunbundle_producto[estado]': {required: true, lettersSpecific: true},
+                'ociosos_comunbundle_producto[uM]': {required: true, lettersonly: true},
+                'ociosos_comunbundle_producto[cantidad]': {required: true},
+                'ociosos_comunbundle_producto[precioMN]': {required: true},
+                'ociosos_comunbundle_producto[precioMLC]': {required: true},
+                'ociosos_comunbundle_producto[centro]': {required: true},
+                'ociosos_comunbundle_producto[categoria]': {required: true},
+                'ociosos_comunbundle_producto[almacen]': {required: true}
+
+            },
+
+            messages: {
+                'ociosos_comunbundle_producto[nombre]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_producto[codigo]': {
+                    required: "Este campo es obligatorio."
+                },
+                'ociosos_comunbundle_producto[estado]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_producto[uM]': {
+                    required: "Este campo es obligatorio.",
+                    lettersonly: "Por favor, escribe sólo letras."
+                },
+                'ociosos_comunbundle_producto[cantidad]': {
+                    required: "Este campo es obligatorio."
+
+
+
+                },
+                'ociosos_comunbundle_producto[precioMN]': {
+                    required: "Este campo es obligatorio."
+
+                },
+
+                'ociosos_comunbundle_producto[precioMLC]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_producto[centro]': {
+                    required: "Este campo es obligatorio."
+                },
+                'ociosos_comunbundle_producto[categoria]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_producto[almacen]': {
+                    required: "Este campo es obligatorio."
+
+                }
+
+
+
+
+            }
+
+
+        });
+
+
+    </script>{% endblock %}
+

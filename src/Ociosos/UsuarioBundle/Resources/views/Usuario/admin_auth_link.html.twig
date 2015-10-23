@@ -1,0 +1,9 @@
+{% if is_granted('ROLE_ADMIN') %}
+    {#<img src="{{ asset('bundles/comun/images/male-user.png') }}" />#}
+    {#<a href="{{path('usuario_logout')}}">Cerrar Sesi&#243;n</a>#}
+    {#<p>Autenticado como <!-- <span> -->{{ app.user.nombre ~ ' ' ~ app.user.apellidos }}<!-- </span> --></p>#}
+
+
+    <p><a href="{{ path('usuario_logout') }}">Cerrar Sesi&oacute;n</a></p>
+    <p>Hola <span>{{ app.user.username }}</span></p>
+{% endif %}

@@ -1,0 +1,7 @@
+reporte_index:
+    pattern:  /
+    defaults: { _controller: ReporteBundle:Default:index }
+
+reporte_generar:
+    pattern: /generar
+    defaults: { _controller: ReporteBundle:Generar:index }

@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: ociosos
+    database_user: root
+    database_password:
+    mailer_transport: smtp
+    mailer_host: mail.citmatel.inf.cu
+    mailer_user: ntcedisac\dany
+    mailer_password: Stern0123
+    locale: sp
+    secret: 77ed0710217e3ffb3a3d2d28890ad37efe01f02e

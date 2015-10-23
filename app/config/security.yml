@@ -1,0 +1,32 @@
+security:
+  firewalls:
+    secured_area:
+      pattern: ^/
+      anonymous: ~
+      form_login:
+        login_path: /usuario/login        
+        check_path: /usuario/login_check
+      logout: 
+        path: /usuario/logout
+        target: /
+
+  access_control:
+    - { path: ^/consultas, roles: ROLE_VIEWER }
+    - { path: ^/reportes, roles: ROLE_VIEWER }
+    - { path: ^/consultantes, roles: ROLE_EDITOR }
+    - { path: ^/rodas_xml, roles: ROLE_EDITOR }
+    - { path: ^/editor, roles: ROLE_EDITOR }
+    - { path: ^/admin, roles: ROLE_ADMIN }
+  providers:
+    main:
+      entity:
+        class: Ociosos\UsuarioBundle\Entity\Usuario
+        property: username
+  encoders:
+    Ociosos\UsuarioBundle\Entity\Usuario: sha512
+    Symfony\Component\Se3curity\Core\User\User: PlainText
+
+  role_hierarchy:
+    ROLE_EDITOR: ROLE_VIEWER
+    ROLE_ADMIN: [ROLE_VIEWER, ROLE_EDITOR]
+

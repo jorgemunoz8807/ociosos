@@ -1,0 +1,53 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('organization') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_organizacion_index') }}">Organizaciones</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Organizaci&oacute;n</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+        {% if(count > 0) %}
+            <div style="text-align: center" class="cannot-delete">
+                <p>
+                    La organización "{{ organizacion.nombre }}" no puede ser eliminada pues  posee {{ count }}  <a href="{{ path('admin_buscar_centros',{'id':organizacion.id}) }}"title="Listado de centros">Centro(s)</a>asociado(s).
+                    Por favor elimínelo(s).
+
+                    {#Esta organizaci&oacute;n no se puede eliminar mientras siga siendo utilizada
+                    por los Centros listados a continuaci&oacute;n:#}
+                </p>
+                {#<ul>
+                    {% for entity in entities %}
+                        <ol>- {{ entity.nombre }} ({{ entity.siglas }}).</ol>
+                    {% endfor %}
+                </ul>#}
+                <br>
+                <br>
+                <a href="{{ path('admin_organizacion_index') }}">Volver al listado de Organizaciones</a>
+            </div>
+        {% else %}
+            <div class="confirm-delete">
+                <p class="message-delete">Seguro desea eliminar la organizaci&oacute;n {{ organizacion.nombre }}?</p>
+                <br>
+                <a class="button" href="{{ path('admin_organizacion_eliminar_confirm', {'id': organizacion.id}) }}">S&iacute;</a>
+                <a class="button" href="{{ path('admin_organizacion_index') }}">No</a>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('organization', "delete") }}
+{% endblock %}

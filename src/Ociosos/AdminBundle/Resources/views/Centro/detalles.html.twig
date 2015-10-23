@@ -1,0 +1,74 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/details.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('entity') }}
+{% endblock %}
+
+{% block breadcrumbs %} &raquo; <a href="{{ path('admin_centro_index') }}">Centros</a>{% endblock %}
+{% block header_title %} <p id="title">Detalles del  Centro</p> {% endblock %}
+
+{% block main %}
+    <div class="details">
+        <div class="dataDetails" id="entityDetails">
+            <div class="field">
+                <label>Nombre del Centro</label>
+                <p>{{centro.nombre}}</p>
+            </div>
+
+            <div class="field">
+                <label>Siglas</label>
+                <p>{{centro.siglas}}</p>
+            </div>
+
+            <div class="field">
+                <label>Direcci&oacute;n donde se encuentra ubicado</label>
+                <p>{{centro.direccion}}</p>
+            </div>
+
+            <div class="field">
+                <label>Tel&eacute;fono</label>
+                <p>{{centro.telefono}}</p>
+            </div>
+
+            <div class="field">
+                <label>Correo Electr&oacute;nico</label>
+                <p>{{centro.email}}</p>
+            </div>
+
+            <div class="field">
+                <label>Director del Centro</label>
+                <p>{{centro.director}}</p>
+            </div>
+
+            <div class="field">
+                <label>REEUP</label>
+                <p>{{centro.rEEUP}}</p>
+            </div>
+
+            <div class="field">
+                <label>Organizaci&oacute;n a la que pertenece</label>
+                <p>{{centro.organizacion}}</p>
+            </div>
+
+            <div class="field">
+                <label>Municipio: </label>
+                <p>{{centro.municipio}}</p>
+            </div>
+
+        </div>
+        <a class="button button-bottom" href="{{path('admin_centro_index')}}">Volver al listado</a>
+    </div>
+
+
+{% endblock %}
+
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('entity', "details") }}
+{% endblock %}

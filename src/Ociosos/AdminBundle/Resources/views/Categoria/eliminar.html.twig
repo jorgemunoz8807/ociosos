@@ -1,0 +1,66 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('category') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_categoria_index') }}">Categor&iacute;as</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Categor&iacute;a</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+        {% if(count > 0) %}
+            <div class="cannot-delete">
+                {#{% if(count > 20) %}#}
+                    <p>
+
+                        La categor&iacute;a "{{ categoria.nombre }}" no puede ser eliminada pues posee {{ count }}  <a href="{{ path('admin_eliminar',{'id':categoria.id}) }}" title="Listado de productos">producto(s)</a> asociado(s).<br>Por favor elimínelo(s)
+                       {#<a href="{{ path('admin_producto_index') }}">listado de Productos</a>.#}
+
+
+                {#<div class="confirm-delete">#}
+                    {#<p class="message-delete">¿Desea eliminarla? </p>#}
+                    {#<br>#}
+                    {#<a class="button" href="{{ path('admin_categoria_eliminar_confirm', {'id': categoria.id}) }}">S&iacute;</a>#}
+                    {#<a class="button" href="{{ path('admin_categoria_index') }}">No</a>#}
+                {#</div>#}
+                    </p>
+                    <br>
+                    {#{% else %}
+                    <p>
+                        Esta Categor&iacute;a no se puede eliminar mientras siga siendo
+                        utilizada por los Productos listados a continuaci&oacute;n:
+                    </p>
+                    <ul>
+                        {% for product in products %}
+                            <ol>- {{ product.nombre }}, c&oacute;digo: {{ product.codigo }}.</ol>
+                        {% endfor %}
+                    </ul>#}
+               {#{% endif %}#}
+                <br>
+                <br>
+                <a href="{{ path('admin_categoria_index') }}">Volver al listado de Categor&iacute;as</a>
+            </div>
+        {% else %}
+            <div class="confirm-delete">
+                <p class="message-delete">¿Desea eliminar la categor&iacute;a "{{ categoria.nombre }}"?</p>
+                <br>
+                <a class="button" href="{{ path('admin_categoria_eliminar_confirm', {'id': categoria.id}) }}">S&iacute;</a>
+                <a class="button" href="{{ path('admin_categoria_index') }}">No</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('category', "delete") }}
+{% endblock %}

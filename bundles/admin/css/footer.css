@@ -1,0 +1,110 @@
+footer
+{
+    color: white;
+    width: 100%;
+    min-width: 1348px;
+    background-color: #000000;
+    float: left;
+    margin-top: 20px;
+
+    -webkit-box-shadow: 0 3px 20px black;
+    -moz-box-shadow: 0 3px 20px black;
+    box-shadow: 0 3px 20px black;
+}
+
+#footer-area
+{
+    padding: 30px 70px;
+    display: inline-block;
+
+}
+
+#footer-area > nav > ul
+{
+    list-style: none;
+}
+
+#footer-area > nav > ul > li
+{
+    float: left;
+}
+
+.footer-block
+{
+    width: 266px;
+    height: 180px;
+    /*background-color: #323232;*/
+    /*background-color: #2B2B2B;*/
+    background-color: #131313;
+    margin: 3px;
+    padding: 10px 15px;
+}
+
+.footer-block p.title
+{
+    font-size: 18pt;
+    /*background-color: #323232;*/
+    padding: 0 15px;
+    /*color: #323232;*/
+    color: #4d4d4d;
+    border-bottom: 1px solid #323232;
+
+    /*-webkit-box-shadow: 0 3px 20px #323232;*/
+    /*-moz-box-shadow: 0 3px 20px #323232;*/
+    /*box-shadow: 0 3px 20px #323232;*/
+
+    /*-webkit-border-radius: 10px;*/
+    /*-moz-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+}
+
+.footer-node
+{
+    border-bottom: 1px solid #323232;
+    padding: 17px 23px;
+    height: 104px;
+}
+
+.footer-node > ul
+{
+    list-style-image: url("../images/check6.png");
+    /*list-style: none;*/
+}
+
+.footer-node a
+{
+    /*color: #323232;*/
+    color: #4d4d4d;
+    text-decoration: none;
+}
+
+.footer-node a:hover
+{
+    /*color: #E1E2DC;*/
+    color: #A9A9AA;
+    /*text-decoration: underline;*/
+}
+
+.footer-node a.active
+{
+    color: #A9A9AA;
+}
+
+#admin-full-copy
+{
+    width: 100%;
+    /*margin: 10px 0 0;*/
+    padding-top: 10px;
+    border-top: 1px solid #323232;
+    background-color: #131313;
+    height: 34px;
+}
+#admin-copyright
+{
+    font-size: 8pt;
+    color: #A9A9AA;
+    width: 706px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}

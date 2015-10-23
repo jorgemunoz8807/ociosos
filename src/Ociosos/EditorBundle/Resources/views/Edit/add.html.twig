@@ -1,0 +1,95 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Editar{% endblock %}
+
+{% block additionalCss %}
+    <link href="{{ asset('bundles/editor/css/Editor.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/editor/css/Forms.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/editor/css/Validation.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('edit', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('edit', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <div id="main">
+        <div id="edit">
+            <div class="form-front">
+                <form action="{{ path('edit_add_viewer') }}" method="post">
+                    <div class="add-form-front">
+                        {{ form_errors(form) }}
+                        <div class="form-field-front">
+                            {{ form_label(form.nombre) }}
+                            {{ form_errors(form.nombre) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.nombre) }}
+                            </div>
+                        </div>
+                        <div class="form-field-front">
+                            {{ form_label(form.apellidos) }}
+                            {{ form_errors(form.apellidos) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.apellidos) }}
+                            </div>
+                        </div>
+                        <div class="form-field-front">
+                            {{ form_label(form.email) }}
+                            {{ form_errors(form.email) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.email) }}
+                            </div>
+                        </div>
+                        <div class="form-field-front">
+                            {{ form_label(form.username) }}
+                            {{ form_errors(form.username) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.username) }}
+                            </div>
+                        </div>
+                        <div class="form-field-front">
+                            {{ form_label(form.password.pass) }}
+                            {{ form_errors(form.password.pass) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.password.pass) }}
+                            </div>
+                        </div>
+                        <div class="form-field-front">
+                            {{ form_label(form.password.confirm) }}
+                            {{ form_errors(form.password.confirm) }}
+                            <div class="form-inputs-front">
+                                {{ form_widget(form.password.confirm) }}
+                            </div>
+                        </div>
+
+                        {{ form_widget(form._token) }}
+                    </div>
+                    <input name="addViewer" class="button" type="submit" value="Adicionar" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('edit', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('edit', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

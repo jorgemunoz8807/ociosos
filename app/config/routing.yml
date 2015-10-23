@@ -1,0 +1,73 @@
+ReporteBundle:
+    resource: "@ReporteBundle/Resources/config/routing.yml"
+    prefix:   /reportes
+
+RodasXMLBundle:
+    resource: "@RodasXMLBundle/Resources/config/routing.yml"
+    prefix:   /rodas_xml
+
+UsuarioBundle:
+    resource: "@UsuarioBundle/Resources/config/routing.yml"
+    prefix:   /usuario
+
+EditorBundle:
+    resource: "@EditorBundle/Resources/config/routing.yml"
+    prefix:   /editor
+    
+AdminBundle:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+comun:
+    resource: "@ComunBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+pagina_estatica:
+  path: /sitio/{pagina}/
+  defaults: {_controller: ComunBundle:Sitio:estatica}
+  
+portada:
+  path: /
+  defaults: {_controller: ComunBundle:Default:portada}
+
+consultas:
+  path: /consultas
+  defaults: {_controller: ComunBundle:Buscar:consultas}
+
+res_consultas:
+  pattern: /res_consulta
+  defaults: {_controller: ComunBundle:Buscar:resConsultas}  
+
+buscar_termino:
+  path: /buscar_termino
+  defaults: {_controller: ComunBundle:Buscar:termino}
+
+buscar_termino_detalles:
+  path: /buscar_termino/detalles
+  defaults: {_controller: ComunBundle:Buscar:terminoDetails}
+
+send_email:
+  path: /send_mail
+  defaults: { _controller: ComunBundle:Email:SendEmail }
+
+send_aplication_view:
+  pattern: /send_aplication_view/{id}
+  defaults: { _controller: ComunBundle:Default:solicitud }
+
+send_aplication_email:
+  path: /send_aplication_email
+  defaults: { _controller: ComunBundle:Email:SendEmailSolicitud }
+
+verify_captcha:
+  path: /verify-captcha
+  defaults: { _controller: ComunBundle:Captcha:validate }
+
+create_captcha:
+  path: /create-captcha
+  defaults: { _controller: ComunBundle:Captcha:getImage }
+
+refresh_captcha:
+  path: /refresh-captcha
+  defaults: { _controller: ComunBundle:Captcha:refreshImage }
+
+

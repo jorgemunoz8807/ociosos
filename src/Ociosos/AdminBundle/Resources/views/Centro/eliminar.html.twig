@@ -1,0 +1,196 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Delete.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('entity') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_centro_index') }}">Centros</a>
+{% endblock %}
+{% block header_title %} <p id="title">Eliminar Centro</p> {% endblock %}
+
+{% block main %}
+    <div class="delete">
+       {# {% if (productCount > 0 ) %}#}
+
+            {##}
+            {#esto va en el if and userCount > 0#}
+            {#<div class="cannot-delete">
+                {% if productCount > 50 %}
+                    <p>
+
+
+                       El centro "{{ centro.siglas }}" posee {{ productCount }} Productos asociados
+                        <a href="{{ path('admin_buscarproductoxcentro',{'id':centro.id}) }}">listado de Productos</a>.
+
+                        ¿
+                        {{ userCount }} usuarios asociados
+                        <a href="{{ path('admin_buscarusuarioxcentro',{'id':centro.id}) }}">listado de usuarios</a>.
+
+
+                <div class="confirm-delete">
+                    <p class="message-delete">Desea eliminarlo? </p>
+                    <br>
+                    <a class="button" href="{{ path('admin_centro_eliminar_confirm', {'id': centro.id}) }}">S&iacute;</a>
+                    <a class="button" href="{{ path('admin_centro_index') }}">No</a>
+                </div>
+
+                        {Este Centro no se puede eliminar mientras le
+                        pertenezcan los {{ productCount }} Productos que puede ver en el
+                        <a href="{{ path('admin_producto_index') }}">listado de Productos</a>.
+                    </p>
+                    <br>
+                {#{% else %}
+                    <p>
+                        Este Centro no se puede eliminar mientras le
+                        pertenezcan los Productos listados a continuaci&oacute;n:
+
+                        <ul>
+                        {% for product in products %}
+                            <ol>- {{ product.nombre }}, c&oacute;digo: {{ product.codigo }}.</ol>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                    </p>
+
+                <br>
+                <br>
+                <a href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+            </div>#}
+           {#<div class="cannot-delete">#}
+               {#{% if userCount > 50 %}
+                <p>
+                        Este Centro no se puede eliminar mientras contenga
+                        {{ productCount }} Usuarios, los cuales puede verificar en el
+                        <a href="{{ path('admin_usuario_index') }}">listado de Usuarios</a>.
+                    </p>
+                    <br>
+                {% else %}
+                    <p>
+                        Este Centro no se puede eliminar mientras contenga
+                        los Usuarios listados a continuaci&oacute;n:
+                    </p>
+                    <ul>
+                        {% for user in users %}
+                            <ol>- {{ user.nombre }} {{ user.apellidos }} ({{ user.username }}).</ol>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <br>
+                <br>
+                <a href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+            </div>#}
+        {% if (productCount > 0 and userCount == 0) %}
+            <div style="text-align: center" class="cannot-delete">
+               {#{% if productCount > 50 %}#}
+                    <p>
+
+                        El centro "{{ centro.siglas }}" no puede ser eliminado pues posee {{ productCount }} <a href="{{ path('admin_buscarproductoxcentro',{'id':centro.id}) }}"title="listado de Productos">Producto(s)</a>
+                         asociado(s). Por favor elimínelos.
+                {#<div class="confirm-delete">#}
+                    {#<p class="message-delete"> ¿Desea eliminar el Centro "{{ centro.nombre }}" ({{ centro.siglas }})?</p>#}
+                    {#<br>#}
+                    {#<a class="button" href="{{ path('admin_centro_eliminar_confirm', {'id': centro.id}) }}">S&iacute;</a>#}
+                    {#<a class="button" href="{{ path('admin_centro_index') }}">No</a>#}
+                {#</div>#}
+
+
+                        {#Este Centro no se puede eliminar mientras le
+                        pertenezcan los {{ productCount }} Productos que puede ver en el
+                        <a href="{{ path('admin_producto_index') }}">listado de Productos</a>.#}
+                    </p>
+                    <br>
+                <a  href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+
+                {#{% else %}
+                    <p>
+                        Este Centro no se puede eliminar mientras le
+                        pertenezcan los Productos listados a continuaci&oacute;n:
+                    </p>
+                    <ul>
+                        {% for product in products %}
+                            <ol>- {{ product.nombre }}, c&oacute;digo: {{ product.codigo }}.</ol>
+                        {% endfor %}
+                    </ul>
+                z
+                {% endif %}
+                <br>
+                <br>
+                <a href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+
+                #}
+
+            </div>
+        {% elseif (productCount == 0 and userCount > 0) %}
+            <div class="cannot-delete">
+                {#{% if userCount > 50 %}#}
+                    <p>
+
+
+
+                        El centro "{{ centro.siglas }}" No puede ser eliminado pues posee {{ userCount }}<a href="{{ path('admin_buscarusuarioxcentro',{'id':centro.id}) }}"title="listado de usuarios">usuario(s)</a> asociado(s). Por favor elimínelo(s).
+                       {#Este Centro no se puede eliminar mientras contenga
+                        {{ productCount }} Usuarios, los cuales puede verificar en el
+                        <a href="{{ path('admin_usuario_index') }}">listado de Usuarios</a>.#}
+                {#<div class="confirm-delete">#}
+                    {#<p class="message-delete"> ¿Desea eliminarlo?</p>#}
+                    {#<br>#}
+                    {#<a class="button" href="{{ path('admin_centro_eliminar_confirm', {'id': centro.id}) }}">S&iacute;</a>#}
+                    {#<a class="button" href="{{ path('admin_centro_index') }}">No</a>#}
+                {#</div>#}
+                    {#</p>#}
+                    <br>
+                {#{% else %}
+                    <p>
+                        El centro "{{ centro.nombre}}" posee {{userCount}}
+                        usuarios asociados
+                    </p>
+                    <ul>
+                        {% for user in users %}
+                            <ol>- {{ user.nombre }} {{ user.apellidos }} ({{ user.username }}).</ol>
+                        {% endfor %}
+                    </ul>
+                {% endif %}#}
+<br>
+                <a href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+            </div>
+
+        {% elseif (productCount > 0 and userCount > 0) %}
+            <div style="text-align: center" class="cannot-delete">
+
+                <p>
+
+
+
+                    El centro "{{ centro.siglas }}"no puede ser eliminado pues posee {{ userCount }} <a href="{{ path('admin_buscarusuarioxcentro',{'id':centro.id}) }}"title="Listado de usuarios">usuario(s)</a>
+
+                    y {{ productCount }} <a href="{{ path('admin_buscarproductoxcentro',{'id':centro.id}) }}"title="Listado de productos">  Producto(s)  </a> asociado(s).Por favor elimínelo(s).
+                </p>
+    <br>
+
+                <a href="{{ path('admin_centro_index') }}">Volver al listado de Centros</a>
+            </div>
+
+        {% else %}
+            <div class="confirm-delete">
+                <p class="message-delete"> ¿Desea eliminar el Centro "{{ centro.nombre }}" ({{ centro.siglas }})?</p>
+                <br>
+                <a class="button" href="{{ path('admin_centro_eliminar_confirm', {'id': centro.id}) }}">S&iacute;</a>
+                <a class="button" href="{{ path('admin_centro_index') }}">No</a>
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('entity', "delete") }}
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    editor.example.class: Ociosos\EditorBundle\Example
+
+services:
+#    editor.example:
+#        class: %editor.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

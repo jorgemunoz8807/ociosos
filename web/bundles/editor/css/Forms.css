@@ -1,0 +1,50 @@
+.form-front
+{
+
+}
+
+.add-form-front
+{
+
+}
+.form-field-front
+{
+    padding: 10px;
+}
+.form-field-front::after
+{
+    content: ' ';
+    clear: both;
+    display: block;
+}
+.form-field-front label
+{
+    color: #808080;
+    font-size: 15px;
+}
+.form-inputs-front
+{
+
+}
+
+.form-inputs-front input
+{
+    color: #E36C09;
+    /*color: #598631;*/
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    outline: none;
+    font-size: 15px;
+
+    -webkit-transition: box-shadow 0.3s ease, border 0.2s linear;
+    -moz-transition: box-shadow 0.3s ease, border 0.2s linear;
+    transition: box-shadow 0.3s ease, border 0.2s linear;
+}
+
+.form-inputs-front input:focus
+{
+    border: 1px solid #E36C09;
+    -webkit-box-shadow: 0 0px 5px rgba(227,108,9, 1);
+    -moz-box-shadow: 0 4px 10px rgba(227,108,9, 1);
+    box-shadow: 0 0px 5px rgba(227,108,9, 1);
+}

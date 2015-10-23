@@ -1,0 +1,9 @@
+.form-field-front ul
+{
+    list-style: none;
+}
+
+.form-field-front li
+{
+    color: #ff0000;
+}

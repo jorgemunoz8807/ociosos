@@ -1,0 +1,52 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Rodas XML{% endblock %}
+
+{% block nav %}
+    {#{% import '::main_menu.html.twig' as mainMenu %}#}
+    {#{{ mainMenu.navigation('xml', role) }}#}
+
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('xml', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('xml', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <div id="main">
+        <div id="rodasXML">
+            <h1>Seleccione el fichero XML exportado desde Rodas XXI 3.0 </h1>
+            <div id="content-area">
+                <form action="{{ path('rodas_xml_exportar') }}" method="post" enctype="multipart/form-data">
+                    <div id="content-form">
+                        <p>
+                            <input type="file" name="fileBox" accept="application/xml" />
+                        </p>                        
+                        <p>
+                            <input type="submit" name="acceptBtn" value="Importar a la Base de Datos" />
+                        </p> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('xml', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('xml', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

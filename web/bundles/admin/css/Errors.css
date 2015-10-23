@@ -1,0 +1,15 @@
+.error-field
+{
+    border: 1px solid #f00 !important;
+    background-color: #fee !important;
+    font-size: 15px;
+    padding: 5px 10px;
+    color: #E36C09;
+}
+
+.summary-errors
+{
+    font-weight: bold;
+    color: #f00;
+    margin-bottom: 10px;
+}

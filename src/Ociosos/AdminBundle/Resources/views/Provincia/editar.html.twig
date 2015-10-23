@@ -1,0 +1,49 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    {#<link href="{{ asset('bundles/admin/css/adds.css') }}" rel="stylesheet" type="text/css"/>#}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('state') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_provincia_index') }}">Provincias</a>
+{% endblock %}
+{% block header_title %} <p id="title">Editar Provincia</p> {% endblock %}
+
+
+{% block main %}
+    <div class="adds">
+        <div class="dataAdds">
+            <form action="{{path('admin_provincia_editar', {'id': provincia.id})}}" method="post">
+                {#{{ form_widget(formulario, {'attr': {'class':'add_forms'}}) }}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div class="form-field">
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Modificar" />
+                <a class="button button-bottom" href="{{path('admin_provincia_index')}}">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('state', "edit") }}
+{% endblock %}

@@ -1,0 +1,31 @@
+Ociosos\UsuarioBundle\Entity\Usuario:
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+         fields: username
+         message: Ya  existe un Usuario con ese login
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+         fields: nombre
+         message: Ya se  existe un usuario con ese nombre.
+  constraints:
+             - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                 fields: email
+                 message: Ya se  existe un usuario con ese email.
+  properties:
+    nombre:
+      - NotBlank:
+          message: Debe escribir un nombre.
+    apellidos:
+      - NotBlank:
+          message: Debe escribir los apellidos.
+    email:
+      - NotBlank:
+          message: Debe escribir un correo.
+      - Email:
+          message: El correo no es una dirección de correo válida.
+    password:
+      - NotBlank:
+          message: Debe escribir una contraseña.
+    username:
+      - NotBlank:
+          message: Debe escribir un nombre de usuario.

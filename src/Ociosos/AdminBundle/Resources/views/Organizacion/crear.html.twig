@@ -1,0 +1,83 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('organization') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_organizacion_index') }}">Organizaciones</a>
+{% endblock %}
+{% block header_title %} <p id="title">Crear Nuevo Organizaci&oacute;n</p> {% endblock %}
+
+{% block main %}
+    <div class="adds">
+        <div class="dataAdds">
+            <form id="OrganizacionCreateForm" action="{{path('admin_organizacion_crear')}}" method="post">
+                {#{{form_widget(formulario, {'attr': {'class':'add_forms'}}) }}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Adicionar" />
+                <a class="button button-bottom" href="{{path('admin_organizacion_index')}}">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('organization', "add") }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('jquery-validate/jquery.validate.js') }}"></script>
+    <script src="{{ asset('jquery-validate/additional-methods.js') }}"></script>
+    {#<script src="{{ asset('jquery-validate/messages_es.js') }}"></script>#}
+
+
+    <script>
+
+        $.validator.addMethod("lettersSpecific", function(value, element) {
+            return this.optional(element) || /^[a-z\sñÑáéíóú]+$/i.test(value);
+        }, "Por favor, escribe sólo letras");
+        $('#OrganizacionCreateForm').validate({
+
+            rules: {
+                'ociosos_comunbundle_organizacion[nombre]': {required: true, lettersSpecific: true}
+
+
+
+            },
+
+            messages: {
+                'ociosos_comunbundle_organizacion[nombre]': {
+                    required: "Este campo es obligatorio."
+
+                }
+
+
+            }
+
+
+        });
+
+
+    </script>{% endblock %}

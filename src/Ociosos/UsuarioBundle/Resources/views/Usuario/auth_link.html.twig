@@ -1,0 +1,9 @@
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITOR') or is_granted('ROLE_VIEWER') %}
+    <img src="{{ asset('bundles/comun/images/male-user.png') }}" />
+    <a href="{{path('usuario_logout')}}">Cerrar Sesi&#243;n</a>
+    <p>Autenticado como: <!-- <span> -->{{ app.user.nombre ~ ' ' ~ app.user.apellidos }}<!-- </span> --></p>
+{% else %}
+    <img src="{{ asset('bundles/comun/images/male-user.png') }}" />
+    <a href="{{path('usuario_login')}}">Iniciar Sesi&#243;n</a>
+{% endif %}
+

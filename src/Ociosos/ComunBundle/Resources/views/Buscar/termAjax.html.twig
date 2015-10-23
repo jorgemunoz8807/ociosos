@@ -1,0 +1,35 @@
+<input type="hidden" name="word" value="{{ word }}" />
+<ul>
+    {% for producto in pagination %}
+        <li>
+            <div class="prod-item">
+                <p class="prod-name">{{ producto.nombre }}</p>
+                <div class="prod-description">
+                    <p><span class="p-header">C&oacute;digo:</span> {{ producto.codigo }}</p>
+                    <p><span class="p-header">Categor&iacute;a:</span> {{ producto.categoria }}</p>
+                    <p><span class="p-header">Siglas del Centro:</span> {{ producto.centro.siglas }}</p>
+                    <p><span class="p-header">Cantidad:</span> {{ producto.cantidad }}</p>
+                    <p><span class="p-header">Estado:</span> {% if(producto.estado == 'O') %} Ocioso {% else %} Lenta Rotaci&oacute;n {% endif %} </p>
+                </div>
+                <div class="prod-buttons">
+                    <a class="details" id="{{ producto.id }}" href="{{ path('buscar_termino_detalles') }}">Detalles</a>
+                    <a href="{{ path('send_aplication_view',{'id':producto.id}) }}">Solicitar</a>
+                </div>
+                <div class="prod-image">
+                    <img src="{{ asset('bundles/comun/images/box2.png') }}">
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+<div class="count">
+    {% if pagination.getTotalItemCount != 0 %}
+        <p> ( {{ pagination.getTotalItemCount  }} productos) </p>
+    {% else %}
+        <p id="not-found"> No hay productos con esa clasificaci&oacute;n </p>
+    {% endif %}
+</div>
+<script type="text/javascript" src="{{ asset('bundles/comun/js/Consultas/details.js') }}"></script>

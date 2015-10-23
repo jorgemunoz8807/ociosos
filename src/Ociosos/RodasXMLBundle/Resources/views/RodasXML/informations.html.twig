@@ -1,0 +1,61 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Rodas XML{% endblock %}
+{% block additionalCss %}
+    <link href="{{ asset('bundles/rodasxml/js/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/rodasxml/css/RodasXml.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('xml', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('xml', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <div id="main">
+        <div id="rodasXML">
+            <h2>El sistema no puede importar los productos del archivo  Xml por los siguientes motivos:</h2>
+            <div id="validation" class="alert-information">
+                <img src="{{ asset('bundles/rodasxml/images/alert-32.png') }}" />
+                <p class="msg-information">
+                    Las siguientes categor&iacute;as no se encuentran autorizadas por el Administrador.
+                    Por favor contacte con el mismo para su autorización:
+                </p>
+                {% for information in informations %}
+                    <p class="msg-information category"> {{ information.message }} </p>
+                {% endfor %}
+            </div>
+
+            <input name="pathFile" type="hidden" value="{{ pathFile }}" />
+            <input name="filename" type="hidden" value="{{ filename }}" />
+            <input name="redirect_route" type="hidden" value="{{ path('rodas_xml_index') }}" />
+            <a id="propose-link" class="links xml-links" href="{{ path('rodas_xml_propose') }}">
+                Proponer al Administrador la autorizaci&oacute;n de las Categor&iacute;as anteriores para que puedan ser usadas en sus productos.
+            </a><br>
+            <a class="links xml-links" href="{{ path('rodas_xml_index') }}">Volver</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('xml', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('xml', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/rodasxml/js/jqueryui/jquery-ui-1.10.4.custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/rodasxml/js/ProposeCategories.js') }}"></script>
+{% endblock %}

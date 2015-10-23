@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Ociosos {% endblock %} {% block separador %} - {% endblock %} {% block subtitle %} {% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% block additionalCss %}
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('ocioso.ico') }}" />
+        <script type="text/javascript" src="{{ asset('bundles/comun/js/jquery-1.9.1.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/comun/js/TerminoSrch.js') }}"></script>
+        {#<script type="text/javascript" src="{{ asset('bundles/comun/js/Email/email.js') }}"></script>#}
+        <script type="text/javascript" src="{{ asset('bundles/comun/js/Email/emailComment.js') }}"></script>
+
+
+    </head>
+    <body>
+        <div id="full-cont">
+        {% block body %}{% endblock %}
+            {% block footer %}
+
+                <footer>
+                    <div id="full-footer-title">
+                        <div id="footer-title">
+                            <h2>Productos Ociosos - versi&oacute;n 2.0.1401.01</h2>
+                        </div>
+                    </div>
+
+                    <div id="footer-middle">
+                        <div id="footer-img">
+                            <img src="{{ asset('bundles/comun/images/citma3.png') }}" />
+                            <img src="{{ asset('bundles/comun/images/citmatel2.jpg') }}" />
+                            <img src="{{ asset('bundles/comun/images/innomax2.png') }}" />
+                        </div>
+                        <nav>
+                            <h2>Mapa del Sitio</h2>
+                            <div id="nav-group2">
+                                <ul>
+                                    {% block group2 %}{% endblock %}
+                                </ul>
+                            </div>
+                            <div id="nav-group1">
+                                <ul>
+                                    {#<li><a href="{{path('pagina_estatica', {'pagina': 'terminos'})}}">T&eacute;rminos y Condiciones</a></li>#}
+                                    {#<li><a href="{{path('pagina_estatica', {'pagina': 'contactos'})}}">Contactos</a></li>#}
+                                    {% block group1 %} {% endblock %}
+                                </ul>
+                            </div>
+                        </nav>
+                        <div id="contact">
+                            <h2>Comente sobre el Sitio</h2>
+                            <div id="contact-cont">
+                                <form id="formCommentemail" action="{{ path('send_email') }}" method="post">
+                                    <div class="editor-full">
+                                        <div class="editor-field">
+                                            <input type="text" id="txtName" name="txtName"  placeholder="Su Nombre..." />
+                                        </div>
+                                    </div>
+                                    <div class="editor-full">
+                                        <div class="editor-field">
+                                            <input type="email" id="txtEmail" name="txtEmail" placeholder="Su Correo..." />{#<label>(*)</label>#}
+                                        </div>
+                                    </div>
+                                    <div class="editor-full">
+                                        <div class="editor-field">
+                                            <textarea name="txtMessage" id="txtArea" placeholder="Su Mensaje..."></textarea>{#<label>(*)</label>#}
+                                        </div>
+                                    </div>
+
+                                    <div >
+                                        <div class="captcha-container">
+                                            <a href="#" id="refreshimg" title="Click to refresh image">
+                                                {#<img src="images/image.php?<?php echo time(); ?>" width="132" height="46" alt="Captcha image">#}
+                                                {% include 'ComunBundle::captcha.html.twig' %}
+                                            </a >
+                                            <a style="color: blue"  href="#" class="refreshImage">refrescar imagen</a>
+                                        </div>
+                                        <label for="captcha">Ingrese los caracteres mostrados en imagen:</label>
+                                        <input type="text" maxlength="6" style="width: 250px" name="captcha" id="captcha">
+                                        <div class="editor-full">
+                                            <input type="submit" value="Enviar" />
+                                            {# formulario para la catpcha#}
+
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="full-copy">
+                        <div id="copyright">
+                            <p>Realizado por UEB I+D, CITMATEL &copy;  Copyright  ® Todos  los derechos reservados .</p>
+                            {#<p>Desarrollado por amromero@citmatel.cu,dany@citmatel.inf.cu</p>#}
+                        </div>
+                    </div>
+                </footer>
+            {% endblock %}
+
+
+
+        {% block javascripts %}
+            {#<link href="{{ asset('bundles/admin/css/admin.css') }}" rel="stylesheet" type="text/css"/>#}
+            <script src="{{ asset('bundles/jquery-1.9.1.js') }}" ></script>
+            <script src="{{ asset('jquery-validate/jquery.validate.js') }} "></script>
+
+            <script>
+               var verifyCaptchaRoute = "{{path('verify_captcha')}}";
+               var refreshCaptchaRoute = "{{path('create_captcha')}}";
+               var logout = "usuario_logout";
+
+            </script>
+            <script src="{{ asset('bundles/comun/js/captcha/captcha.js') }}"></script>
+
+
+
+        {% endblock %}
+        </div>
+        
+    </body>
+</html>

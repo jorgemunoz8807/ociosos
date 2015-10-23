@@ -1,0 +1,319 @@
+{% macro admin_footer_nav(area, whosActive) %}
+
+    <ul>
+        <li>
+            <div class="footer-block">
+                <p class="title">Almacenes</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "stock") %}
+                            <li><a class="active" href="{{ path('admin_almacen_index') }}">Listado de los Almacenes</a> </li>
+                        {% else %}
+                            <li><a href="{{ path('admin_almacen_index') }}">Listado de los Almacenes</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Categor&iacute;as</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "category") %}
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_categoria_index') }}">Listado de las Categor&iacute;as</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_categoria_index') }}">Listado de las Categor&iacute;as</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_categoria_crear') }}">Adicionar Nueva Categor&iacute;a</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_categoria_crear') }}">Adicionar Nueva Categor&iacute;a</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_categoria_index') }}">Editar Categor&iacute;a</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_categoria_index') }}">Editar Categor&iacute;a</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Categor&iacute;a</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Categor&iacute;a</a> </li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="{{ path('admin_categoria_index') }}">Listado de las Categor&iacute;as</a></li>
+                            <li><a href="{{ path('admin_categoria_crear') }}">Adicionar Nueva Categor&iacute;a</a> </li>
+                            <li><a href="{{ path('admin_categoria_index') }}">Editar Categor&iacute;a</a> </li>
+                            <li><a href="">Eliminar Categor&iacute;a</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Centro del Citma</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "entity") %}
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_centro_index') }}">Listado de los Centros</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_centro_index') }}">Listado de los Centros</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_centro_crear') }}">Adicionar Nuevo Centro</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_centro_crear') }}">Adicionar Nuevo Centro</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_centro_index') }}">Editar Centro</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_centro_index') }}">Editar Centro</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "details") %}
+                                <li><a class="active" href="">Detalles del Centro</a> </li>
+                            {% else %}
+                                <li><a href="">Detalles del Centro</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Centro</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Centro</a> </li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="{{ path('admin_centro_index') }}">Listado de los Centros</a></li>
+                            <li><a href="{{ path('admin_centro_crear') }}">Adicionar Nuevo Centro</a> </li>
+                            <li><a href="{{ path('admin_centro_index') }}">Editar Centro</a> </li>
+                            <li><a href="">Detalles del Centro</a> </li>
+                            <li><a href="">Eliminar Centro</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Municipios</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "city") %}
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_municipio_index') }}">Listado de los Municipios</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_municipio_index') }}">Listado de los Municipios</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_municipio_crear') }}">Adicionar Nuevo Municipio</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_municipio_crear') }}">Adicionar Nuevo Municipio</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_municipio_index') }}">Editar Municipio</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_municipio_index') }}">Editar Municipio</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Municipio</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Municipio</a> </li>
+                            {% endif %}
+
+                        {% else %}
+                            <li><a href="{{ path('admin_municipio_index') }}">Listado de los Municipios</a></li>
+                            <li><a href="{{ path('admin_municipio_crear') }}">Adicionar Nuevo Municipio</a> </li>
+                            <li><a href="{{ path('admin_municipio_index') }}">Editar Municipio</a> </li>
+                            <li><a href="">Eliminar Municipio</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Organizaciones</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "organization") %}
+
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_organizacion_index') }}">Listado de las Organizaciones</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_organizacion_index') }}">Listado de las Organizaciones</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_organizacion_crear') }}">Adicionar Nueva Organizaci&oacute;n</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_organizacion_crear') }}">Adicionar Nueva Organizaci&oacute;n</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_organizacion_index') }}">Editar Organizaci&oacute;n</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_organizacion_index') }}">Editar Organizaci&oacute;n</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Organizaci&oacute;n</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Organizaci&oacute;n</a> </li>
+                            {% endif %}
+
+                        {% else %}
+                            <li><a href="{{ path('admin_organizacion_index') }}">Listado de las Organizaciones</a></li>
+                            <li><a href="{{ path('admin_organizacion_crear') }}">Adicionar Nueva Organizaci&oacute;n</a> </li>
+                            <li><a href="{{ path('admin_organizacion_index') }}">Editar Organizaci&oacute;n</a> </li>
+                            <li><a href="">Eliminar Organizaci&oacute;n</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Productos</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "product") %}
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_producto_index') }}">Listado de los Productos</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_producto_index') }}">Listado de los Productos</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_producto_crear') }}">Adicionar Nuevo Producto</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_producto_crear') }}">Adicionar Nuevo Producto</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_producto_index') }}">Editar Producto</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_producto_index') }}">Editar Producto</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "details") %}
+                                <li><a class="active" href="">Detalles del Producto</a> </li>
+                            {% else %}
+                                <li><a href="">Detalles del Producto</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Producto</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Producto</a> </li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="{{ path('admin_producto_index') }}">Listado de los Productos</a></li>
+                            <li><a href="{{ path('admin_producto_crear') }}">Adicionar Nuevo Producto</a></li>
+                            <li><a href="{{ path('admin_producto_index') }}">Editar Producto</a> </li>
+                            <li><a href="">Detalles del Producto</a> </li>
+                            <li><a href="">Eliminar Producto</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Provincias</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "state") %}
+
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_provincia_index') }}">Listado de las Provincias</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_provincia_index') }}">Listado de las Provincias</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_provincia_crear') }}">Adicionar Nueva Provincia</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_provincia_crear') }}">Adicionar Nueva Provincia</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="{{ path('admin_provincia_index') }}">Editar Provincia</a> </li>
+                            {% else %}
+                                <li><a href="{{ path('admin_provincia_index') }}">Editar Provincia</a> </li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Provincia</a> </li>
+                            {% else %}
+                                <li><a href="">Eliminar Provincia</a> </li>
+                            {% endif %}
+
+                        {% else %}
+                            <li><a href="{{ path('admin_provincia_index') }}">Listado de las Provincias</a></li>
+                            <li><a href="{{ path('admin_provincia_crear') }}">Adicionar Nueva Provincia</a> </li>
+                            <li><a href="{{ path('admin_provincia_index') }}">Editar Provincia</a> </li>
+                            <li><a href="">Eliminar Provincia</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="footer-block">
+                <p class="title">Usuarios</p>
+                <div class="footer-node">
+                    <ul>
+                        {% if(area == "user") %}
+                            {% if(whosActive == "list") %}
+                                <li><a class="active" href="{{ path('admin_usuario_index') }}">Listado de los Usuarios</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_usuario_index') }}">Listado de los Usuarios</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "add") %}
+                                <li><a class="active" href="{{ path('admin_usuario_crear') }}">Adicionar Nuevo Usuario</a></li>
+                            {% else %}
+                                <li><a href="{{ path('admin_usuario_crear') }}">Adicionar Nuevo Usuario</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "edit") %}
+                                <li><a class="active" href="">Editar Usuario</a></li>
+                            {% else %}
+                                <li><a href="">Editar Usuario</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "details") %}
+                                <li><a class="active" href="">Detalles del Usuario</a></li>
+                            {% else %}
+                                <li><a href="">Detalles del Usuario</a></li>
+                            {% endif %}
+
+                            {% if(whosActive == "delete") %}
+                                <li><a class="active" href="">Eliminar Usuario</a></li>
+                            {% else %}
+                                <li><a href="">Eliminar Usuario</a></li>
+                            {% endif %}
+                        {% else %}
+                            <li><a href="{{ path('admin_usuario_index') }}">Listado de los Usuarios</a></li>
+                            <li><a href="{{ path('admin_usuario_crear') }}">Adicionar Nuevo Usuario</a></li>
+                            <li><a href="">Editar Usuario</a></li>
+                            <li><a href="">Detalles del Usuario</a></li>
+                            <li><a href="">Eliminar Usuario</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+{% endmacro %}

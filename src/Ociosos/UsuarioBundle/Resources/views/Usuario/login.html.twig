@@ -1,0 +1,116 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Formulario de Acceso{% endblock %}
+
+{% block additionalCss %}
+    <link href="{{ asset('bundles/editor/css/Forms.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {{ mainMenu.navigation('') }}
+{% endblock %}
+
+{% block main %}
+<div id="main">   
+    <h1>Por favor autent&iacute;quese</h1>
+    {% if error %} 
+        <div class="validation-summary-errors">
+            <p>{{ error.message | replace({
+                "Bad credentials": "Inválido nombre de usuario/contraseña."
+                }) }}
+            </p>
+        </div>
+    {% endif %}
+
+    <div class="login>">
+        <form id="formLogin" action="{{path('usuario_login_check')}}" method="post">
+            <div class="editor-label">
+                <label for="Login">Usuario</label>
+            </div>
+            <div class="form-inputs-front">
+                <input {% if error %} class="input-validation-error" {% else %} {% endif %}
+                        id="username" name="_username" type="text" value="{{last_username | default('')}}" />
+            </div>
+            <div class="editor-label">
+                <label for="Pass">Contrase&#241;a</label>
+            </div>
+            <div class="form-inputs-front">
+                <input {% if error %} class="input-validation-error" {% else %} {% endif %}
+                        name="_password" type="password" value="" />
+            </div>
+            <p><input type="submit" value="Acceder" name="login" /></p>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('jquery-validate/jquery.validate.js') }}"></script>
+    <script >
+
+//        $("#formLogin").validate({
+//            rules: {
+////                firstname: "required",
+////                lastname: "required",
+//                username: {
+//                    required: true,
+//                    minlength: 8
+//                }
+////                password: {
+////                    required: true,
+////                    minlength: 5
+////                },
+////                confirm_password: {
+////                    required: true,
+////                    minlength: 5,
+////                    equalTo: "#password"
+////                },
+////                email: {
+////                    required: true,
+////                    email: true
+////                },
+////                topic: {
+////                    required: "#newsletter:checked",
+////                    minlength: 2
+////                },
+////                agree: "required"
+//            },
+//            messages: {
+////                firstname: "Please enter your firstname",
+////                lastname: "Please enter your lastname",
+//                username: {
+//                    required: "Please enter a username",
+//                    minlength: "Your username must consist of at least 8 characters"
+//                }
+////                password: {
+////                    required: "Please provide a password",
+////                    minlength: "Your password must be at least 5 characters long"
+////                },
+////                confirm_password: {
+////                    required: "Please provide a password",
+////                    minlength: "Your password must be at least 5 characters long",
+////                    equalTo: "Please enter the same password as above"
+////                },
+////                email: "Please enter a valid email address",
+////                agree: "Please accept our policy"
+//            }
+//        });
+
+    </script>
+
+{% endblock %}

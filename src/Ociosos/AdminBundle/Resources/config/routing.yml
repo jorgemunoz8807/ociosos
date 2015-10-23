@@ -1,0 +1,229 @@
+admin_login:
+  path: /login
+  defaults:
+admin_login:
+    path: /login
+    defaults:
+
+admin_login_check:
+  path: /login_check
+  defaults:
+admin_logout:
+  path: /logout
+  defaults:
+
+admin_portada:
+    pattern:  /
+    defaults: { _controller: AdminBundle:Default:index }
+
+  # Almacenes
+admin_almacen_index:
+  path: /almacen/index
+  defaults: { _controller: AdminBundle:Almacen:Index }
+
+admin_almacen_detalles:
+  path: /almacen/detalles/{id}
+  defaults: { _controller: AdminBundle:Almacen:Detalles }
+  
+  # Categorias
+admin_categoria_index:
+  path: /categoria/index
+  defaults: { _controller: AdminBundle:Categoria:Index }
+
+admin_categoria_crear:
+  path: /categoria/crear
+  defaults: { _controller: AdminBundle:Categoria:Crear }
+
+admin_categoria_editar:
+  path: /categoria/editar/{id}
+  defaults: { _controller: AdminBundle:Categoria:editar }
+
+admin_categoria_eliminar:
+  path: /categoria/eliminar/{id}
+  defaults: { _controller: AdminBundle:Categoria:Eliminar }
+
+admin_categoria_eliminar_confirm:
+  path: /categoria/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Categoria:EliminarConfirm }
+  
+admin_categoria_detalles:
+  path: /categoria/detalles/{id}
+  defaults: { _controller: AdminBundle:Categoria:Detalles }  
+ 
+  # Centros
+admin_centro_index:
+  path: /centro/index
+  defaults: { _controller: AdminBundle:Centro:Index } 
+  
+admin_centro_crear:
+  path: /centro/crear
+  defaults: { _controller: AdminBundle:Centro:Crear } 
+  
+admin_centro_editar:
+  path: /centro/editar/{id}
+  defaults: { _controller: AdminBundle:Centro:editar }
+  
+admin_centro_eliminar:
+  path: /centro/eliminar/{id}
+  defaults: { _controller: AdminBundle:Centro:Eliminar }
+
+admin_centro_eliminar_confirm:
+  path: /centro/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Centro:EliminarConfirm }
+  
+admin_centro_detalles:
+  path: /centro/detalles/{id}
+  defaults: { _controller: AdminBundle:Centro:Detalles } 
+  
+  # Municipios
+admin_municipio_index:
+  path: /municipio/index
+  defaults: { _controller: AdminBundle:Municipio:Index } 
+  
+admin_municipio_crear:
+  path: /municipio/crear
+  defaults: { _controller: AdminBundle:Municipio:Crear } 
+  
+admin_municipio_editar:
+  path: /municipio/editar/{id}
+  defaults: { _controller: AdminBundle:Municipio:editar }
+  
+admin_municipio_eliminar:
+  path: /municipio/eliminar/{id}
+  defaults: { _controller: AdminBundle:Municipio:Eliminar }
+
+admin_municipio_eliminar_confirm:
+  path: /municipio/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Municipio:EliminarConfirm }
+  
+admin_municipio_detalles:
+  path: /municipio/detalles/{id}
+  defaults: { _controller: AdminBundle:Municipio:Detalles } 
+  
+  # Productos
+admin_producto_index:
+  path: /producto/index
+  defaults: { _controller: AdminBundle:Producto:Index }
+
+admin_producto_crear:
+  path: /producto/crear
+  defaults: { _controller: AdminBundle:Producto:Crear }
+
+admin_producto_editar:
+  path: /producto/editar/{id}
+  defaults: { _controller: AdminBundle:Producto:editar }
+
+admin_producto_eliminar:
+  path: /producto/eliminar/{id}
+  defaults: { _controller: AdminBundle:Producto:eliminar }
+
+admin_producto_eliminar_confirm:
+  path: /producto/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Producto:eliminarConfirm }
+  
+admin_producto_detalles:
+  path: /producto/detalles/{id}
+  defaults: { _controller: AdminBundle:Producto:Detalles }
+
+  # Provincias
+admin_provincia_index:
+  path: /provincia/index
+  defaults: { _controller: AdminBundle:Provincia:Index } 
+  
+admin_provincia_crear:
+  path: /provincia/crear
+  defaults: { _controller: AdminBundle:Provincia:Crear } 
+  
+admin_provincia_editar:
+  path: /provincia/editar/{id}
+  defaults: { _controller: AdminBundle:Provincia:Editar } 
+  
+admin_provincia_eliminar:
+  path: /provincia/eliminar/{id}
+  defaults: { _controller: AdminBundle:Provincia:Eliminar }
+
+admin_provincia_eliminar_confirm:
+  path: /provincia/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Provincia:eliminarConfirm }
+  
+admin_provincia_detalles:
+  path: /provincia/detalles/{id}
+  defaults: { _controller: AdminBundle:Provincia:Detalles }
+  
+  # Organizaciones
+admin_organizacion_index:
+  path: /organizacion/index
+  defaults: { _controller: AdminBundle:Organizacion:Index } 
+  
+admin_organizacion_crear:
+  path: /organizacion/crear
+  defaults: { _controller: AdminBundle:Organizacion:Crear } 
+  
+admin_organizacion_editar:
+  path: /organizacion/editar/{id}
+  defaults: { _controller: AdminBundle:Organizacion:editar }
+  
+admin_organizacion_eliminar:
+  path: /organizacion/eliminar/{id}
+  defaults: { _controller: AdminBundle:Organizacion:Eliminar }
+
+admin_organizacion_eliminar_confirm:
+  path: /organizacion/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Organizacion:EliminarConfirm }
+  
+admin_organizacion_detalles:
+  path: /organizacion/detalles/{id}
+  defaults: { _controller: AdminBundle:Organizacion:Detalles }
+  
+  # Usuarios
+admin_usuario_index:
+  path: /usuario/index
+  defaults: { _controller: AdminBundle:Usuario:Index } 
+  
+admin_usuario_crear:
+  path: /usuario/crear
+  defaults: { _controller: AdminBundle:Usuario:Crear } 
+  
+admin_usuario_editar:
+  path: /usuario/editar/{id}
+  defaults: { _controller: AdminBundle:Usuario:Editar } 
+  
+admin_usuario_eliminar:
+  path: /usuario/eliminar/{id}
+  defaults: { _controller: AdminBundle:Usuario:Eliminar }
+
+admin_usuario_eliminar_confirm:
+  path: /usuario/eliminar/confirmar/{id}
+  defaults: { _controller: AdminBundle:Usuario:EliminarConfirm }
+  
+admin_usuario_detalles:
+  path: /usuario/detalles/{id}
+  defaults: { _controller: AdminBundle:Usuario:Detalles }
+
+admin_eliminar:
+  path: /producto/eliminar_productos/{id}
+  defaults: { _controller: AdminBundle:Producto:buscar_productos }
+
+admin_buscar_municipios:
+  path: /municipio/listado_municipios/{id}
+  defaults: { _controller: AdminBundle:Municipio:buscar_municipios }
+
+admin_buscar_centros:
+  path: /producto/eliminar_centros/{id}
+  defaults: { _controller: AdminBundle:Centro:buscar_centros }
+
+admin_buscarproductoxcentro:
+    path: /producto/buscar_productos/{id}
+    defaults: { _controller: AdminBundle:Producto:buscar_productosxCentro }
+
+admin_buscarusuarioxcentro:
+    path: /producto/buscar_usuarios/{id}
+    defaults: { _controller: AdminBundle:Usuario:buscar_usuariosxCentro }
+
+system_html_deletepost:
+    path:     /deletepost/{id}
+    defaults: { _controller: AdminBundle:Producto:deleteSelected }
+
+    
+admin_all:
+  pattern: /*

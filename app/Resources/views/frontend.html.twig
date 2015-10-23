@@ -1,0 +1,68 @@
+{% extends "::base.html.twig" %}
+
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/comun/css/Site.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/comun/css/mainmenu.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block body %}
+<div id="auth">
+    <div id="auth-cont">
+        <div id="auth-nav">
+            <nav>
+                <ul>
+                    <li><a href="{{path('pagina_estatica', {'pagina': 'terminos'})}}">T&#233;rminos y Condiciones</a></li>
+                    <li class="separator"> | </li>
+                    <li><a href="{{path('pagina_estatica', {'pagina': 'contactos'})}}">Contactos</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div id="auth-img">
+            {% block auth %}
+                {{ render(controller('UsuarioBundle:Usuario:authLink')) }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<header>
+    <div id="logos">
+        <div id="logos-cont">
+            <div id="pgrph-cont">
+                <p></p>
+                {#<p>Productos Ociosos Logo</p>#}
+                <img alt="Banner"  style="padding-bottom: 1px" src="{{ asset('bundles/comun/images/logoociosos.png') }}" />
+                {#<span style="color: #fff;">Versi&oacute;n 2.0.1401.01</span>#}
+            </div>
+            <div id="search-cont">
+                {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+                    <form name="termsForm" action="{{ path('buscar_termino') }}" method="post">
+                        <input type="text" name="wordSearch" value="Buscar producto..." />
+                        <div id="search-img">
+                            {#<a href="#">#}
+                            {#<img src="{{ asset('bundles/comun/images/search.png') }}" alt="Buscar" title="Buscar" />#}
+                            {#</a>#}
+                            <input type="submit" value="" />
+                        </div>
+                    </form>
+                {% else %}
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <div id="full-nav">
+        {% block nav %} {% endblock %}
+    </div>
+    <div id="full-banner">
+        {% block banner %} {% endblock %}
+    </div>
+</header>
+
+<div id="full-main">
+    {% block main %}{% endblock %}
+</div>
+{% endblock %}

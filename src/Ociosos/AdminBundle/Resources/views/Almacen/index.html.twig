@@ -1,0 +1,49 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/grids.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Pagination.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('stock') }}
+{% endblock %}
+
+{% block breadcrumbs %} &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a> {% endblock %}
+{% block header_title %} <p id="title">Almacenes</p> {% endblock %}
+
+{% block main %}
+<div class="grid">
+    <div class="dataGrid">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Nombre del Almac&eacute;n</th>
+                <th>C&oacute;digo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for almacen in pagination %}
+                <tr>
+                    <td>{{almacen.nombre}}</td>
+                    <td>{{almacen.codAlmacen}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <div class="count">
+            <p> ( {{ pagination.getTotalItemCount  }} almacenes) </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('stock', "") }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "::admin.html.twig" %}
+
+{% block main %}
+    <h2>Modificar Organizaci&oacute;n {{organizacion.nombre}}</h2>
+
+    <div>
+        <form action="{{path('admin_organizacion_editar', { 'id': organizacion.id })}}" method="post">
+            {{form_widget(formulario)}}
+            <input type="submit" value="Modificar" />
+        </form>
+    </div>
+
+    <a href="{{path('admin_organizacion_index')}}">Volver al listado</a>
+
+{% endblock %}

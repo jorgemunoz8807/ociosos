@@ -1,0 +1,46 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Editar{% endblock %}
+
+{% block additionalCss %}
+    <link href="{{ asset('bundles/editor/css/Editor.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('edit', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('edit', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <div id="main">
+        <div id="message">
+            <img src="{{ asset('bundles/editor/images/check-25.png') }}" alt="ok" title="ok" />
+            <p>{{ message }}</p>
+        </div>
+        <div id="edit">
+            <img src="{{ asset('bundles/editor/images/users_icon_grey_24.png') }}">
+            <a id="add-viewer" href="{{ path('edit_add_viewer') }}">Adicionar un nuevo Consultante</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('edit', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('edit', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/editor/js/Edit.js') }}"></script>
+{% endblock %}

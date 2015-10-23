@@ -1,0 +1,7 @@
+edit_index:
+  pattern: /
+  defaults: { _controller: EditorBundle:Edit:index }
+
+edit_add_viewer:
+  pattern: /adicionar_consultante
+  defaults: { _controller: EditorBundle:Edit:addViewer }

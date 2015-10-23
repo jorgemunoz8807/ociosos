@@ -1,0 +1,49 @@
+{% extends '::frontend.html.twig' %}
+
+
+{% block title %}Inicio{% endblock %}
+{% block separador %}  {% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('home', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('home', "") }}
+    {% endif %}
+{% endblock %}
+
+
+{% block banner %} 
+{#<div id="banner">#}
+    {#&#123;&#35;<img alt="Banner" src="{{ asset('bundles/comun/images/logoociosos.png') }}" />&#35;&#125;#}
+{#</div>#}
+{% endblock %}
+
+
+{% block main %}
+<div id="main">
+    <p class="static-text">
+        Sistema para la Administración y Control de los Inventarios de
+        productos ociosos y de lenta rotación de las entidades del
+        Ministerio de Ciencia, Tecnología y Medio Ambiente. <br />
+        Esta aplicación tiene como objetivo contribuir a una más rápida
+        identificación de aquellos productos que siendo ociosos y de
+        lento movimiento para algunas entidades son necesarios o
+        deficitarios en otras.
+    </p>
+</div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('home', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('home', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('', "", "group1") }}
+{% endblock %}

@@ -1,0 +1,157 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+#full-cont
+{
+ float: left;
+    width: 100%;
+    min-width: 1348px;
+}
+
+#main_area
+{
+    /*background-color: aquamarine;*/
+    width: 1024px;
+    margin: auto;
+    font-family: Verdana, sans-serif;
+    padding-top: 20px;
+}
+
+#main_area p#main_subtitle
+{
+    margin-bottom: 15px;
+}
+
+#main_area ul
+{
+    list-style: none;
+}
+
+#main_area li
+{
+    float: left;
+}
+
+#main_area .description, #main_area img
+{
+    float: left;
+}
+
+#main_area .description
+{
+    /*background-color: lightskyblue;*/
+}
+
+.areas
+{
+    width: 450px;
+    /*height: 120px;*/
+    height: 90px;
+    /*background-color: cornflowerblue;*/
+    background-color: #F8F8F8;
+    margin: 10px;
+    padding: 10px 10px;
+    border: 1px solid #D6D6D6;
+}
+
+.areas p.area_title
+{
+    font-size: 10pt;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+#stoke_area
+{
+
+}
+
+.body_area
+{
+    margin-top: 15px;
+    border-top: 1px solid #CCC;
+    padding-top: 13px;
+    /*height: 60px;*/
+    /*border-bottom: 1px solid #CCC;*/
+}
+
+.body_area a
+{
+    font-size: 9pt;
+    text-decoration: none;
+    color: #0074BD;
+}
+
+.body_area a:hover
+{
+    text-decoration: underline;
+}
+
+.body_area p.subtitle
+{
+    font-size: 7.5pt;
+    font-style: italic;
+    color: #989898;
+}
+
+.button-container
+{
+    float: right;
+}
+.button-container img
+{
+    float: left;
+}
+.button
+{
+    cursor: pointer;
+    padding: 4px 17px;
+    color: #5A5A5A;
+    text-align: center;
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: "Lucida Grande", Verdana, sans-serif;
+    border: 1px solid #E4E4E4;
+    border-bottom: 1px solid #B4B4B4;
+    border-left-color: #D2D2D2;
+    border-right-color: #D2D2D2;
+    background: url("../images/button.png") 0 0 repeat-x;
+    /*background-color: #B4B4B4;*/
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-bottom: 27px;
+    margin-right: 5px;
+    float: left;
+
+    -webkit-transition: background 0.3s ease, color 0.2s linear;
+    -moz-transition: background 0.2s ease, color 0.2s linear;
+    transition: background 0.3s ease, color 0.2s linear;
+}
+
+.button:hover
+{
+    background: #5A5A5A;
+    /*background: #C2C2BB;*/
+    color: #F0F0F0;
+    /*text-decoration: underline;*/
+}
+
+.button-bottom
+{
+    margin-top: 15px;
+}
+
+input.button
+{
+    margin-right: 13px;
+}

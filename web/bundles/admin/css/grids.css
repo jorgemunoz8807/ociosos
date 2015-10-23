@@ -1,0 +1,72 @@
+.grid
+{
+    padding: 20px 40px;
+}
+
+.dataGrid
+{
+    padding: 10px 30px 0;
+}
+
+.dataGrid table a
+{
+    color: #0084C6;
+}
+
+.dataGrid table a:hover
+{
+    text-decoration: underline;
+}
+
+.dataGrid table
+{
+    border: 1px solid #BEBFB9;
+    /*margin: auto;*/
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.923em;
+    width: 100%;
+}
+
+.dataGrid tr:nth-child(even)
+{
+    background-color: #F3F4EE;
+}
+.dataGrid tr:nth-child(odd)
+{
+    background-color: white;
+}
+
+.dataGrid table td, .dataGrid table th
+{
+    border: 0;
+    padding: 8px 10px;
+    padding-left: 18px;
+    vertical-align: middle;
+}
+
+.dataGrid table td
+{
+    color: #5A5A5A;
+    /*color: #000000;*/
+}
+
+.dataGrid table td.numbers
+{
+    text-align: right;
+}
+.dataGrid table td.operations
+{
+    text-align: center;
+}
+
+.dataGrid table th
+{
+    text-transform: uppercase;
+    background-color: #E1E2DC;
+    border: 1px solid #BEBFB9;
+    padding: 3px 10px;
+    font-weight: normal;
+    /*color: #000000;*/
+    color: #5A5A5A;
+}

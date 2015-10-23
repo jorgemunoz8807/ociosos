@@ -1,0 +1,15 @@
+{% extends "::admin.html.twig" %}
+
+{% block main %}
+<h2>Modificar Centro {{centro.nombre}}</h2>
+
+<div>
+    <form action="{{path('admin_centro_editar', { 'id': centro.id })}}" method="post">
+        {{form_widget(formulario)}}
+            <input type="submit" value="Modificar" />
+    </form>
+</div>
+
+<a href="{{path('admin_centro_index')}}">Volver al listado</a>
+
+{% endblock %}

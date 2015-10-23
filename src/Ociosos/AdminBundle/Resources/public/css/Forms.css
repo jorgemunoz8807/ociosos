@@ -1,0 +1,81 @@
+.adds
+{
+    padding: 20px 40px;
+}
+.dataAdds
+{
+    margin: auto;
+}
+.dataAdds form
+{
+    overflow: hidden;
+}
+.add_forms
+{
+    /*padding: 10px 30px;*/
+    border: 1px solid #BEBFB9;
+    background-color: #F7F7F7;
+}
+.form-field
+{
+
+    padding-left: 10px;
+    border-bottom: 1px solid #dddddd;
+    background-color: rgb(203, 253, 183);
+
+}
+.form-field:after
+{
+    clear: both;
+    content: ' ';
+    display: block;
+}
+.form-field label
+{
+    border-top: 1px solid #ffffff;
+    line-height: 42px;
+    float: left;
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+    width: 35%;
+    text-shadow: 0 1px 0 #fff;
+    text-transform: capitalize;
+    font-family: 'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
+}
+.form-inputs > input, .form-inputs > select
+{
+    margin: 3px 0;
+    border: 1px solid #CCCCCC;
+    border: 1px solid #ffffff;
+    padding: 0.6em;
+    width: 100%;
+    display: block;
+    background-color: #ffffff;
+    line-height: 22px;
+    font-size: 18px;
+
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-inputs > input[type='text']:hover
+{
+
+}
+
+.form-inputs
+{
+    float: right;
+    background-color: white;
+    width: 65%;
+    display: block;
+}
+.form-field .error{
+    color:#ff0000;
+    padding: 0px 0.6em;
+    width: 95%;
+}

@@ -1,0 +1,151 @@
+Ociosos\ComunBundle\Entity\Categoria:
+   constraints:
+       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+           fields: nombre
+           message: Ya existe una categoría con ese nombre
+   properties:
+       nombre:
+         - NotBlank:
+             message: Debe escribir un nombre.
+
+
+Ociosos\ComunBundle\Entity\Centro:
+   constraints:
+
+       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+           fields: siglas
+           message: Ya existe un Centro con estas Siglas.
+       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                  fields: nombre
+                  message: Ya existe un Centro con este Nombre.
+       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                  fields: email
+                  message: Ya existe un Centro con este Email
+   properties:
+       nombre:
+         - NotBlank:
+             message: Debe escribir un nombre.
+       siglas:
+         - NotBlank:
+             message: Debe escribir las siglas.
+       direccion:
+         - NotBlank:
+             message: Debe escribir una direccion.
+       telefono:
+                - NotBlank:
+                    message: Debe escribir un número de teléfono.
+
+                - Regex:
+                    pattern: "/\d/"
+                    match: true
+                    message: Debe ser un número de teléfono válido.
+       email:
+         - NotBlank:
+             message: Debe escribir un correo.
+         - Email:
+            message: El correo {{ value }} no es un correo válido.
+       director:
+         - NotBlank:
+             message: Debe escribir un director.
+       rEEUP:
+         - NotBlank:
+             message: Debe escribir un código REEUP.
+
+Ociosos\ComunBundle\Entity\Municipio:
+   constraints:
+          - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+              fields: nombre
+              message: Ya  existe un Municipio con este nombre"
+   properties:
+       nombre:
+         - NotBlank:
+             message: Debe escribir un nombre.
+
+Ociosos\ComunBundle\Entity\Organizacion:
+  constraints:
+         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+             fields: nombre
+             message: Ya existe una organización con ese nombre
+  properties:
+      nombre:
+        - NotBlank:
+            message: Debe escribir un nombre.
+
+Ociosos\ComunBundle\Entity\Producto:
+  properties:
+      nombre:
+        - NotBlank:
+            message: Debe escribir un nombre.
+      codigo:
+        - NotBlank:
+            message: Debe escribir un código.
+      uM:
+        - NotBlank:
+            message: Debe escribir un código.
+      cantidad:
+        - NotBlank:
+            message: Debe escribir un código.
+        - Regex:
+            pattern: "/\d/"
+            match: false
+            message: Este campo corresponde a números.
+      precioMN:
+        - NotBlank:
+            message: Debe escribir un precio.
+        - Regex:
+            pattern: "/\d/"
+            match: true
+            message: Este campo corresponde a números.
+      precioMLC:
+        - NotBlank:
+            message: Debe escribir un precio.
+        - Regex:
+            pattern: "/\d/"
+            match: true
+            message: Este campo corresponde a números.
+
+Ociosos\ComunBundle\Entity\Provincia:
+  constraints:
+           - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+               fields: nombre
+               message: Ya se  existe una provincia con este nombre
+  properties:
+      nombre:
+        - NotBlank:
+            message: Debe escribir un nombre.
+
+Ociosos\UsuarioBundle\Entity\Usuario:
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+           fields: nombre
+           message: Ya se  existe un usuario con ese nombre.
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+           fields: email
+           message: Ya existe un usuario con ese email.
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+           fields: username
+           message: Ya existe un usuario con ese login.
+
+  properties:
+      password:
+        -Length:
+            min: 8
+            minMessage: "Minimo de 8 caracteres"
+
+  properties:
+      nombre:
+        - NotBlank:
+            message: Debe escribir un nombre.
+      apellidos:
+        - NotBlank:
+            message: Debe escribir un apellido.
+      email:
+        - NotBlank:
+            message: Debe escribir un correo.
+        - Email:
+            message: El correo {{ value }} no es un correo válido.
+      username:
+        - NotBlank:
+            message: Debe escribir un nombre de usuario.

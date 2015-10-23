@@ -1,0 +1,15 @@
+{% extends "::admin.html.twig" %}
+
+{% block main %}
+<h2>Modificar Producto {{producto.nombre}}</h2>
+
+<div>
+    <form action="{{path('admin_producto_editar', { 'id': producto.id })}}" method="post">
+        {{form_widget(formulario)}}
+            <input type="submit" value="Modificar" />
+    </form>
+</div>
+
+<a href="{{path('admin_producto_index')}}">Volver al listado</a>
+
+{% endblock %}

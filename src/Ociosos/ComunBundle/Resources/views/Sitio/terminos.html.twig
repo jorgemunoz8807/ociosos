@@ -1,0 +1,42 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Contactos{% endblock %}
+
+{% block nav %}
+    {% import '::main_menu.html.twig' as mainMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ mainMenu.navigation('', app.user.role) }}
+    {% else %}
+        {{ mainMenu.navigation('', "") }}
+    {% endif %}
+{% endblock %}
+
+{% block banner %} 
+<div id="banner">
+    <img alt="Banner" src="{{ asset('bundles/comun/images/banner.jpg') }}" />
+</div>
+{% endblock %}
+
+{% block main %}
+<div id="main">       
+    <h1>T&eacute;rminos y Condiciones</h1>
+    <p class="static-text">
+        Aqui van los  terminos y condiciones dados por el cliente <br>
+        <a   href="{{ asset('uploads/documents/Decreto315-2013.pdf') }} "><img  src="{{ asset('bundles/comun/images/PDF_icon.png') }}" > <br>Decreto<br> 315-2013</a>
+
+    </p>
+</div>
+{% endblock %}
+
+{% block group2 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {% if is_granted('ROLE_VIEWER') or is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+        {{ footerMenu.footer_nav('', app.user.role, "group2") }}
+    {% else %}
+        {{ footerMenu.footer_nav('', "", "group2") }}
+    {% endif %}
+{% endblock %}
+{% block group1 %}
+    {% import '::footer_menu.html.twig' as footerMenu %}
+    {{ footerMenu.footer_nav('terms', "", "group1") }}
+{% endblock %}

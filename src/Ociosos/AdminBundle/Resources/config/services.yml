@@ -1,0 +1,7 @@
+parameters:
+#    admin.example.class: Ociosos\AdminBundle\Example
+
+services:
+#    admin.example:
+#        class: %admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

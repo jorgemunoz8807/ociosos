@@ -1,0 +1,205 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('user') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_usuario_index') }}">Usuarios</a>
+{% endblock %}
+{% block header_title %} <p id="title">Crear Nuevo Usuario</p> {% endblock %}
+
+{% block main %}
+    <div class="adds">
+        <div class="dataAdds">
+            <form id="UsuarioCreateForm" action="{{path('admin_usuario_crear')}}" method="post">
+                {#{{ form_widget(formulario, {'attr': {'class':'add_forms'}}) }}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                    {{ form_errors(form.apellidos) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_errors(form.password.pass) }}
+                    {{ form_errors(form.password.confirm) }}
+                    {{ form_errors(form.role) }}
+                    {{ form_errors(form.salt) }}
+                    {{ form_errors(form.centro) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.apellidos) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.apellidos) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.apellidos) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.email) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.email) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.email) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.username) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.username) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.username) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.password.pass) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.password.pass) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.password.pass) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.password.confirm) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.password.confirm) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.password.confirm) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.role) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.role) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.role) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.salt) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.salt) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.salt) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.centro) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.centro) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.centro) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Adicionar" />
+                <a class="button button-bottom" href="{{path('admin_usuario_index')}}">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('user', "add") }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('jquery-validate/jquery.validate.js') }}"></script>
+    <script src="{{ asset('jquery-validate/additional-methods.js') }}"></script>
+    {#<script src="{{ asset('jquery-validate/messages_es.js') }}"></script>#}
+
+
+    <script>
+        $.validator.addMethod('validCubanEmail', function (value, element, param) {
+
+
+            var regex =/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|cu)\b/;
+
+            return regex.test(value); // return bool here if valid or not.
+        }, 'Por favor escriba una dirección de correo Nacional(.cu)');
+
+        $.validator.addMethod("lettersSpecific", function(value, element) {
+            return this.optional(element) || /^[a-z\sñÑáéíóú]+$/i.test(value);
+        }, "Por favor escribe solo letras");
+
+        $.validator.addMethod("ValidPassword", function(value, element) {
+            return this.optional(element) || /(?=.*[A-Z])(?=.*[0-9])[#@£$-/:-?{-~!"^_`\[\]a-zA-Z0-9]{8,25}/i.test(value);
+//            esta expresion regular requiere una al menos mayuscula y un numero
+            /*
+
+             Requires one upper and one number 8-25 chars
+
+             Tom Dutton
+             /(?=.*[A-Z])(?=.*[0-9])[#@£$-/:-?{-~!"^_`\[\]a-zA-Z0-9]{6,25}/g
+             zFiw£@tJ2!D56pqdE8T#7&7ts // Pass %%%%%%A1 // Pass 1Password // Pass password234D3232332%$5454 // Pass aaaaa1 aaaaa1 AAAAAA…*/
+        }, "Su contraseña debe contener entre 8 y 25 caracteres al menos una mayúscula y un número");
+
+
+
+
+        $('#UsuarioCreateForm').validate({
+
+            rules: {
+                'ociosos_usuariobundle_usuario[nombre]': {required: true, lettersSpecific: true},
+                'ociosos_usuariobundle_usuario[apellidos]': {required: true, lettersSpecific: true},
+                'ociosos_usuariobundle_usuario[email]': {required: true,validCubanEmail:true},
+                'ociosos_usuariobundle_usuario[username]': {required: true, lettersonly: true},
+                'ociosos_usuariobundle_usuario[password][pass]': {required: true, ValidPassword:8},
+                'ociosos_usuariobundle_usuario[password][confirm]': {required: true},
+                'ociosos_usuariobundle_usuario[role]': {required: true},
+                'ociosos_usuariobundle_usuario[salt]': {required: true},
+                'ociosos_usuariobundle_usuario[centro]': {required: true}
+
+            },
+
+            messages: {
+                'ociosos_usuariobundle_usuario[nombre]': {
+                    required: "Este campo es obligatorio.",
+                    lettersSpecific: "Por favor, escribe sólo letras."
+                },
+                'ociosos_usuariobundle_usuario[apellidos]': {
+                    required: "Este campo es obligatorio.",
+                    lettersSpecific: "Por favor, escribe sólo letras."
+
+                },
+                'ociosos_usuariobundle_usuario[email]': {
+                    required: "Este campo es obligatorio.",
+                    email: "Por favor, escribe una dirección de correo válida."
+                },
+                'ociosos_usuariobundle_usuario[username]': {
+                    required: "Este campo es obligatorio.",
+                    lettersonly: "Por favor, escribe sólo letras."
+                },
+                'ociosos_usuariobundle_usuario[password][pass]': {
+                    required: "Este campo es obligatorio.",
+                    ValidPassword: "Su contraseña debe tener al menos una mayúscula, un número y tener al menos 6 caracteres."
+
+                },
+                'ociosos_usuariobundle_usuario[password][confirm]': {
+                    required: "Este campo es obligatorio."
+
+
+                },
+
+                'ociosos_usuariobundle_usuario[role]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_usuariobundle_usuario[salt]': {
+                    required: "Este campo es obligatorio."
+                },
+                'ociosos_usuariobundle_usuario[centro]': {
+                    required: "Este campo es obligatorio."
+
+                }
+
+
+
+
+            }
+
+
+        });
+
+
+    </script>{% endblock %}

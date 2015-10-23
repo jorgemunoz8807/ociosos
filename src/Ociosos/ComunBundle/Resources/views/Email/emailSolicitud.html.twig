@@ -1,0 +1,50 @@
+{% extends "::frontend.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/comun/css/emailAplication.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<div id="contact">
+    <h2>Solicitud del Producto <br>
+        Nombre:{{nombre}}   Código:{{ codigo }} </h2>
+    <div  id="contact-cont" >
+        <form id="formAplicationemail" action="{{ path('send_aplication_email') }}" method="post" >
+            <div class="editor-full">
+                <div class="editor-field">
+                    <input type="text"  id="nombre" name="txtName" placeholder="Su Nombre..." />
+                    <input type="hidden" name="id" value="{{ id }}">
+                </div>
+            </div>
+            <div class="editor-full">
+                <div class="editor-field">
+                  {# <label>(*)</label>#} <input type="email" id="email" name="txtEmail" placeholder="Su Correo..." />
+                </div>
+            </div>
+            <div class="editor-full">
+                <div class="editor-field">
+                      <textarea id="mensaje" placeholder="Descripción de la solicitud..." name="txtMessage"></textarea>
+                </div>
+            </div>
+            <div class="editor-full">
+                <input id="send_mail" name="send_mail" type="submit" value="Enviar" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
+    {% block footer %}{% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            {#<script type="text/javascript" src="{{ asset('bundles/comun/js/Email/emailAp.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('bundles/comun/js/Email/emailAplication.js') }}"></script>
+
+
+        {% endblock %}
+

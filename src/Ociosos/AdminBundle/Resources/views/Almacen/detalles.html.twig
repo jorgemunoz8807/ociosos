@@ -1,0 +1,28 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/details.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_almacen_index') }}">Almacenes</a>
+{% endblock %}
+{% block header_title %} <p id="title">Detalles del  Almac&eacute;n</p> {% endblock %}
+
+{% block main %}
+    {#<h2>Almac&eacute;n: {{almacen.nombre}}</h2>#}
+
+    <div class="details">
+        <div class="dataDetails" id="stockDetails">
+            <fieldset>
+                <legend>Detalles</legend>
+                <p>Nombre: {{almacen.nombre}}</p>
+                <p>C&oacute;digo del Almac&eacute;n: {{almacen.codAlmacen}}</p>
+            </fieldset>
+        </div>
+    </div>
+
+    <a href="{{path('admin_almacen_index')}}">Volver al listado</a>
+
+{% endblock %}

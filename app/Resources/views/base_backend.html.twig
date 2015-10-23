@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Ociosos - Administration Area{% endblock %} - {% block subtitle %}  {% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% block additional_style %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('ocioso.ico') }}" />
+
+    </head>
+    <body>
+        <div id="full-cont">
+        {% block body %}{% endblock %}
+
+        </div>
+        <footer>
+            <div id="footer-area">
+                <nav>
+                    {% block footerNav %} {% endblock %}
+                </nav>
+            </div>
+
+            <div id="admin-full-copy">
+                <div id="admin-copyright">
+                    <p>Realizado por UEB I+D, CITMATEL &copy; Copyright  ® Todos los derechos reservados.</p>
+                    {#<p>Desarrollado por amromero@citmatel.cu,dany@citmatel.inf.cu</p>#}
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+    </html>

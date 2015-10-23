@@ -1,0 +1,195 @@
+{% extends "::admin.html.twig" %}
+
+{% block additional_style %}
+    <link href="{{ asset('bundles/admin/css/Forms.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/admin/css/Errors.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block nav %}
+    {% import '::main_admin_menu.html.twig' as mainMenu %}
+    {{ mainMenu.admin_navigation('entity') }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    &raquo; <a href="{{ path('admin_portada') }}">Administraci&oacute;n</a>
+    &raquo; <a href="{{ path('admin_centro_index') }}">Centros</a>
+{% endblock %}
+{% block header_title %} <p id="title">Crear Nuevo Centro</p> {% endblock %}
+
+{% block main %}
+
+    <div class="adds">
+        <div class="dataAdds">
+            <form id="CentroCreateForm" action="{{ path('admin_centro_crear') }}" method="post">
+                {#{{form_widget(formulario, {'attr': {'class':'add_forms'}})}}#}
+                <div class="summary-errors">
+                    {{ form_errors(form.nombre) }}
+                    {{ form_errors(form.siglas) }}
+                    {{ form_errors(form.direccion) }}
+                    {{ form_errors(form.telefono) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_errors(form.director) }}
+                    {{ form_errors(form.rEEUP) }}
+                    {{ form_errors(form.organizacion) }}
+                    {{ form_errors(form.municipio) }}
+                </div>
+                <div class="add_forms">
+                    {{ form_errors(form) }}
+                    <div {% if form_errors(form.nombre) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.nombre) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.siglas) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.siglas) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.siglas) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.direccion) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.direccion) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.direccion) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.telefono) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.telefono) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.telefono) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.email) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.email) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.email) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.director) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.director) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.director) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.rEEUP) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.rEEUP) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.rEEUP) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.organizacion) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.organizacion) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.organizacion) }}
+                        </div>
+                    </div>
+                    <div {% if form_errors(form.municipio) %} class="form-field error-field" {% else %} class="form-field" {% endif %}>
+                        {{ form_label(form.municipio) }}
+                        <div class="form-inputs">
+                            {{ form_widget(form.municipio) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                </div>
+                <input class="button button-bottom" type="submit" value="Adicionar"/>
+                <a class="button button-bottom" href="{{ path('admin_centro_index') }}">Volver al listado</a>
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block footerNav %}
+    {% import '::footer_admin_menu.html.twig' as footerMenu %}
+    {{ footerMenu.admin_footer_nav('entity', "add") }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('jquery-validate/jquery.validate.js') }}"></script>
+    <script src="{{ asset('jquery-validate/additional-methods.js') }}"></script>
+    {#<script src="{{ asset('jquery-validate/messages_es.js') }}"></script>#}
+
+
+    <script>
+
+        $.validator.addMethod('validCubanEmail', function (value, element, param) {
+                   var regex =/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|cu)\b/;
+            return regex.test(value); // return bool here if valid or not.
+        }, 'Por favor escriba una dirección de correo Nacional(.cu)');
+
+        $.validator.addMethod("lettersSpecific", function(value, element) {
+            return this.optional(element) || /^[a-z\sñÑáéíóú]+$/i.test(value);
+        }, "Por favor, escribe sólo letras");
+
+        $('#CentroCreateForm').validate({
+
+
+
+
+            rules: {
+                'ociosos_comunbundle_centro[nombre]': {required: true, lettersSpecific: true},
+                'ociosos_comunbundle_centro[siglas]': {required: true, lettersSpecific: true},
+                'ociosos_comunbundle_centro[direccion]': {required: true},
+                'ociosos_comunbundle_centro[telefono]': {required: true, minlength:8},
+                'ociosos_comunbundle_centro[email]':{required:true,validCubanEmail:true },
+                'ociosos_comunbundle_centro[director]': {required: true, lettersSpecific: true},
+                'ociosos_comunbundle_centro[rEEUP]': {required: true},
+                'ociosos_comunbundle_centro[organizacion]': {required: true},
+                'ociosos_comunbundle_centro[municipio]': {required: true}
+
+
+            },
+
+            messages: {
+                'ociosos_comunbundle_centro[nombre]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_centro[siglas]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_centro[direccion]': {
+                    required: "Este campo es obligatorio."
+                },
+                'ociosos_comunbundle_centro[telefono]': {
+                    required: "Este campo es obligatorio.",
+                    minlength: "Su teléfono debe tener al menos 8 dígitos."
+                },
+                'ociosos_comunbundle_centro[email]': {
+                    required: "Este campo es obligatorio.",
+                    email:"por favor escriba una direccion de correo válida "
+
+                },
+                'ociosos_comunbundle_centro[director]': {
+                    required: "Este campo es obligatorio."
+
+
+                },
+                'ociosos_comunbundle_centro[rEEUP]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_centro[organizacion]': {
+                    required: "Este campo es obligatorio."
+
+                },
+                'ociosos_comunbundle_centro[municipio]': {
+                    required: "Este campo es obligatorio."
+
+                }
+
+
+            }
+
+
+        });
+
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+<div id="details-content">
+    {#<fieldset>
+        <legend>Detalles</legend>
+    </fieldset>#}
+    <p><b>Nombre:</b> {{producto.nombre}}</p>
+    <p><b>C&oacute;digo:</b> {{producto.codigo}}</p>
+    <p>
+        <b>Fecha de Exportaci&oacute;n:</b>
+        {% if(producto.fechaExportacion) %}
+            {{producto.fechaExportacion|date('Y-m-d H:i:s')}}
+        {% endif %}
+    </p>
+    <p><b>Unidad de Medida:</b> {{producto.uM}}</p>
+    <p><b>Cantidad:</b> {{producto.cantidad}}</p>
+    <p><b>Precio en Moneda Nacional:</b> {{producto.precioMN}}</p>
+    <p><b>Precio en Moneda Libremente Convertible:</b> {{producto.precioMLC}}</p>
+    <p><b>Almac&eacute;n donde se encuentra:</b> {{producto.almacen}}</p>
+    <p><b>Categor&iacute;a en la que se agrupa:</b> {{producto.categoria}}</p>
+    <p><b>Centro que lo posee:</b> {{producto.centro.nombre}} - ({{ producto.centro.siglas }})</p>
+</div>
